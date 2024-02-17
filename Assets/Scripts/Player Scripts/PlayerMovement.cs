@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float sprintSpeed;
     [SerializeField] private float speedMultiplier;
     [SerializeField] private float groundDrag;
 
@@ -23,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump;
 
     [Header("Keybinds")]
-    [SerializeField] private KeyCode jumpKey;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
 
     [SerializeField] private Transform playerOrientation;
 
@@ -33,6 +36,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody playerRB;
+
+    public MovementState state;
+
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        air
+    }
 
     private void Start()
     {
@@ -47,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         ApplyDrag();
         SpeedControl();
         CheckGround();
+        StateHandler();
     }
 
     private void FixedUpdate()
@@ -63,6 +76,27 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Smile");
             Jump();
+        }
+    }
+
+    private void StateHandler()
+    {
+        // Sprinting
+        if (isGrounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+        // Walking
+        else if (isGrounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+        // Air
+        else
+        {
+            state = MovementState.air;
         }
     }
 

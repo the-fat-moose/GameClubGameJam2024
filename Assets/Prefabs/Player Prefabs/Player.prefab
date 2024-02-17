@@ -107,17 +107,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  walkSpeed: 7
+  sprintSpeed: 10
   speedMultiplier: 10
   groundDrag: 5
   playerHeight: 2
   ground:
     serializedVersion: 2
     m_Bits: 8
+  maxSlopeAngle: 40
   jumpForce: 12
   jumpCooldown: 0.25
   airMultiplier: 0.4
+  crouchSpeed: 3.5
+  crouchYScale: 0.5
+  startYScale: 0
   jumpKey: 32
+  sprintKey: 304
+  crouchKey: 99
   playerOrientation: {fileID: 6150188816268466097}
+  state: 0
 --- !u!1 &6381413509275997132
 GameObject:
   m_ObjectHideFlags: 0

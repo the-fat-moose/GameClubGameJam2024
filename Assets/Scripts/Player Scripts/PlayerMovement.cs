@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -24,9 +22,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airMultiplier;
     private bool canJump;
 
+    [Header("Crouching")]
+    [SerializeField] private float crouchSpeed;
+    [SerializeField] private float crouchYScale;
+    [SerializeField] private float startYScale;
+
     [Header("Keybinds")]
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode crouchKey = KeyCode.C;
 
     [SerializeField] private Transform playerOrientation;
 
@@ -43,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         sprinting,
+        crouching,
         air
     }
 
@@ -51,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         playerRB.freezeRotation = true;
         canJump = true;
+
+        startYScale = transform.localScale.y;
     }
 
     private void Update()
@@ -71,18 +78,36 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        
+        // Jump
         if (Input.GetKey(jumpKey) && canJump && isGrounded)
         {
-            Debug.Log("Smile");
             Jump();
+        }
+
+        // Crouch
+        if (Input.GetKeyDown(crouchKey))
+        {
+            Crouch();
+        }
+
+        // UnCrouch
+        if (Input.GetKeyUp(crouchKey))
+        {
+            UnCrouch();
         }
     }
 
     private void StateHandler()
     {
+        // Crouching
+        if (Input.GetKey(crouchKey))
+        {
+            state = MovementState.crouching;
+            moveSpeed = crouchSpeed;
+        }
         // Sprinting
-        if (isGrounded && Input.GetKey(sprintKey))
+        else if (isGrounded && Input.GetKey(sprintKey))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -149,6 +174,17 @@ public class PlayerMovement : MonoBehaviour
 
         // set jump to available
         Invoke(nameof(ResetJump), jumpCooldown);
+    }
+
+    private void Crouch()
+    {
+        transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+        playerRB.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+    }
+
+    private void UnCrouch()
+    {
+        transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
     }
 
     private void ResetJump()

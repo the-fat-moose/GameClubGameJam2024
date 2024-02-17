@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask ground;
     private bool isGrounded;
 
+    [Header("Slope Handling")]
+    [SerializeField] float maxSlopeAngle;
+    [SerializeField] private RaycastHit slopeHit;
+    private bool exitingSlope = true;
+
     [Header("Jumping")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
@@ -63,8 +68,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         PlayerInput();
-        ApplyDrag();
-        SpeedControl();
         CheckGround();
         StateHandler();
     }
@@ -72,6 +75,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        ApplyDrag();
+        SpeedControl();
+
+        Debug.Log(playerRB.velocity);
     }
 
     private void PlayerInput()
@@ -80,22 +87,13 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         
         // Jump
-        if (Input.GetKey(jumpKey) && canJump && isGrounded)
-        {
-            Jump();
-        }
+        if (Input.GetKey(jumpKey) && canJump && isGrounded) { Jump(); }
 
         // Crouch
-        if (Input.GetKeyDown(crouchKey))
-        {
-            Crouch();
-        }
+        if (Input.GetKeyDown(crouchKey)) { Crouch(); }
 
         // UnCrouch
-        if (Input.GetKeyUp(crouchKey))
-        {
-            UnCrouch();
-        }
+        if (Input.GetKeyUp(crouchKey)) { UnCrouch(); }
     }
 
     private void StateHandler()
@@ -119,10 +117,7 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = walkSpeed;
         }
         // Air
-        else
-        {
-            state = MovementState.air;
-        }
+        else { state = MovementState.air; }
     }
 
     private void MovePlayer()
@@ -130,8 +125,18 @@ public class PlayerMovement : MonoBehaviour
         // calculate movement direction
         moveDirection = playerOrientation.forward * verticalInput + playerOrientation.right * horizontalInput;
 
-        if (isGrounded) { playerRB.AddForce(moveDirection.normalized * moveSpeed * speedMultiplier, ForceMode.Force); }
-        else if (!isGrounded) { playerRB.AddForce(moveDirection.normalized * moveSpeed * speedMultiplier * airMultiplier, ForceMode.Force); }
+        if (OnSlope() && !exitingSlope) 
+        { 
+            playerRB.AddForce(GetSlopeMoveDir() * moveSpeed * speedMultiplier, ForceMode.Force);
+            if (playerRB.velocity.y > 0) { playerRB.AddForce(Vector3.down * 80f, ForceMode.Force); }
+        }
+        else if (isGrounded) { playerRB.AddForce(moveDirection.normalized * moveSpeed * speedMultiplier, ForceMode.Force); }
+        else if (!isGrounded) 
+        { 
+            playerRB.AddForce(new Vector3(moveDirection.x, -2.5f, moveDirection.z).normalized * moveSpeed * speedMultiplier * airMultiplier, ForceMode.Force);
+        }
+
+        playerRB.useGravity = !OnSlope();
     }
 
     private void CheckGround()
@@ -153,24 +158,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Vector3 flatVelocity = new Vector3(playerRB.velocity.x, 0f, playerRB.velocity.z);
-
-        // limit velocity
-        if (flatVelocity.magnitude > moveSpeed)
+        // limit speed on slopes
+        if (OnSlope() && !exitingSlope) 
+        { 
+            if (playerRB.velocity.magnitude > moveSpeed) { playerRB.velocity = playerRB.velocity.normalized * moveSpeed; }
+        }
+        // limit speed on ground or in air
+        else
         {
-            Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
-            playerRB.velocity = new Vector3(limitedVelocity.x, 0f, limitedVelocity.z);
+            Vector3 flatVelocity = new Vector3(playerRB.velocity.x, 0f, playerRB.velocity.z);
+
+            // limit velocity
+            if (flatVelocity.magnitude > moveSpeed)
+            {
+                Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
+                playerRB.velocity = new Vector3(limitedVelocity.x, 0f, limitedVelocity.z);
+            }
         }
     }
 
     private void Jump()
     {
+        exitingSlope = true;
         canJump = false;
 
         // reset y velocity to 0
         playerRB.velocity = new Vector3(playerRB.velocity.x, 0f, playerRB.velocity.z);
 
-        playerRB.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        playerRB.AddForce(transform.up * jumpForce * playerRB.mass, ForceMode.Impulse);
 
         // set jump to available
         Invoke(nameof(ResetJump), jumpCooldown);
@@ -190,5 +205,21 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
+        exitingSlope = false;
+    }
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, ((playerHeight * 0.5f) + 0.3f)))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        }
+        return false;
+    }
+
+    private Vector3 GetSlopeMoveDir()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 }

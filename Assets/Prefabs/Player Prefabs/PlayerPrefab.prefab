@@ -120,8 +120,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4517198855102487105, guid: b1883b709e74a5a4bb0dcd6ee9074a3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 976062377678375007}
   m_SourcePrefab: {fileID: 100100000, guid: b1883b709e74a5a4bb0dcd6ee9074a3c, type: 3}
+--- !u!1 &2949930274323406469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4517198855102487105, guid: b1883b709e74a5a4bb0dcd6ee9074a3c, type: 3}
+  m_PrefabInstance: {fileID: 1603300813807600836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &976062377678375007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949930274323406469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc3a87425d469e4eb45e706a254a584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 8979738565418112451}
+  orientation: {fileID: 4835121885993489269}
+  sensX: 1000
+  sensY: 1000
 --- !u!4 &3339078534869517206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4041659213286426450, guid: b1883b709e74a5a4bb0dcd6ee9074a3c, type: 3}
@@ -283,7 +307,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraHolder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3976012134110904584, guid: a0515ec134934f84ba727c734198f3a5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2081328678039917614, guid: a0515ec134934f84ba727c734198f3a5, type: 3}

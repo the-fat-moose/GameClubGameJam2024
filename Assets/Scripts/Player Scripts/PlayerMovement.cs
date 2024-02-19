@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
         // reset y velocity to 0
         playerRB.velocity = new Vector3(playerRB.velocity.x, 0f, playerRB.velocity.z);
 
-        playerRB.AddForce(transform.up * jumpForce * playerRB.mass, ForceMode.Impulse);
+        playerRB.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
         // set jump to available
         Invoke(nameof(ResetJump), jumpCooldown);
@@ -208,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSlope()
     {
+        exitingSlope = false;
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, ((playerHeight * 0.5f) + 0.3f)))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);

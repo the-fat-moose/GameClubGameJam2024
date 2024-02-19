@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField] private Transform playerOrientation;
+    [SerializeField] Transform cam;
+    [SerializeField] private Transform orientation;
 
-    [Header("Mouse Sensitivity")]
-    [SerializeField] private float sensX;
-    [SerializeField] private float sensY;
+    float mouseX;
+    float mouseY;
 
-    private float camXrotation;
-    private float camYrotation;
+    [SerializeField] float sensX;
+    [SerializeField] float sensY;
+
+    float multiplier = 0.01f;
+
+    float xRotation;
+    float yRotation;
 
     private void Start()
     {
-        // lock the cursor to the center of the screen and hide it
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void Update()
     {
-        // get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        MouseInputs();
 
-        camYrotation += mouseX;
-        camXrotation -= mouseY;
-        // clamp the rotation to be -90 and 90 up and down
-        camXrotation = Mathf.Clamp(camXrotation, -90f, 90f);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
 
-        // rotate cam and orientation
-        transform.rotation = Quaternion.Euler(camXrotation, camYrotation, 0);
-        playerOrientation.rotation = Quaternion.Euler(0, camYrotation, 0);
+    private void MouseInputs()
+    {
+        mouseX = Input.GetAxisRaw("Mouse X");
+        mouseY = Input.GetAxisRaw("Mouse Y");
+
+        yRotation += mouseX * sensX * multiplier;
+        xRotation -= mouseY * sensY * multiplier;
+
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
     }
 }

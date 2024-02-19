@@ -77,8 +77,6 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
         ApplyDrag();
         SpeedControl();
-
-        Debug.Log(playerRB.velocity);
     }
 
     private void PlayerInput()

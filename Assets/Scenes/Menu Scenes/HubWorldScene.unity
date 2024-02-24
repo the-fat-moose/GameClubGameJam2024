@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -5.424, y: -71.109, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.702, y: 1.763}
+  m_AnchoredPosition: {x: 4.859, y: 1.763}
   m_SizeDelta: {x: -18.296, y: -8.2923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &795304
@@ -778,10 +778,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1164665386}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.032999992, y: 0.00000023841858}
-  m_SizeDelta: {x: -0.2195, y: -0.00000014901}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.723999, y: 0.00000023841858}
+  m_SizeDelta: {x: 1.1624999, y: 0.19999985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138878834
 MonoBehaviour:
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.039082766, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1609,8 +1609,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 25457ac441966d54c83a25e4e0f4f1b7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1827,7 +1827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393391253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011897365, y: -0.77137536, z: 0.014427372, w: 0.6361057}
+  m_LocalRotation: {x: 0.011897365, y: -0.7713753, z: 0.0144273685, w: 0.6361057}
   m_LocalPosition: {x: -5.161, y: -0.305, z: 4.644148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1883,8 +1883,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1286716652}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0263714
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06520653
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2143,7 +2147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473691020}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.043035273, y: 0.81403357, z: -0.06081765, w: 0.57601964}
+  m_LocalRotation: {x: 0.04303527, y: 0.8140335, z: -0.06081764, w: 0.57601964}
   m_LocalPosition: {x: -3.0620034, y: 2.2176583, z: 3.0568523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3529,7 +3533,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bdfda576ae679a44ea3252ab96d45d58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.23328263
+      value: -0.411
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bdfda576ae679a44ea3252ab96d45d58, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3983,8 +3987,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 25457ac441966d54c83a25e4e0f4f1b7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4488,6 +4492,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1286716652}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0487
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.260876
       objectReference: {fileID: 0}
@@ -4497,7 +4505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.0699177
+      value: -6.179
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5753,7 +5761,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.2}
+  m_SizeDelta: {x: 0, y: 0.19999999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164665387
 MonoBehaviour:
@@ -5775,8 +5783,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 25457ac441966d54c83a25e4e0f4f1b7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6088,6 +6096,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1286716652}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0125
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0627117
       objectReference: {fileID: 0}
@@ -6097,7 +6109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.007169
+      value: -6.0067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6592,6 +6604,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1286716652}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0114
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.260876
       objectReference: {fileID: 0}
@@ -6601,7 +6617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9986267
+      value: -1.999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7426,7 +7442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.032557793, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -7962,8 +7978,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 25457ac441966d54c83a25e4e0f4f1b7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8263,10 +8279,10 @@ RectTransform:
   - {fileID: 320928012}
   m_Father: {fileID: 739146289}
   m_LocalEulerAnglesHint: {x: -7.243, y: -26.105, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.03, y: 1.578}
-  m_SizeDelta: {x: -18.296, y: -8.2719}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10.869001, y: -3.422}
+  m_SizeDelta: {x: 1.382, y: 1.7280998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1636910331
 MonoBehaviour:
@@ -8686,7 +8702,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838840668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.043035273, y: 0.81403357, z: -0.06081765, w: 0.57601964}
+  m_LocalRotation: {x: 0.04303527, y: 0.8140335, z: -0.06081764, w: 0.57601964}
   m_LocalPosition: {x: 0.162, y: -0.193, z: 2.821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8845,7 +8861,15 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 136ec9f624a57624ba22cad6ec917289, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f7b4a986cc321654380a0d70d305e389, type: 2}
+      objectReference: {fileID: 2100000, guid: b32d31e89c05d5a40ab34999416bd187, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 136ec9f624a57624ba22cad6ec917289, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b32d31e89c05d5a40ab34999416bd187, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 136ec9f624a57624ba22cad6ec917289, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b32d31e89c05d5a40ab34999416bd187, type: 2}
     - target: {fileID: 919132149155446097, guid: 136ec9f624a57624ba22cad6ec917289, type: 3}
       propertyPath: m_Name
       value: EdgeFloor (3)
@@ -8864,8 +8888,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1286716652}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0251
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.0712905
+      value: 4.032
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e8d0ec5362503fc4da616787ce5991ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9362,7 +9390,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.037840113, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9654,7 +9682,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.038648754, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

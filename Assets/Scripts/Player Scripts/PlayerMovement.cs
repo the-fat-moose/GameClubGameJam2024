@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform playerCam;
+    private Shooting shootScript;
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float walkSpeed;
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
+    [SerializeField] KeyCode shootKey = KeyCode.Mouse0;
 
     [SerializeField] private Transform playerOrientation;
 
@@ -43,10 +47,10 @@ public class PlayerMovement : MonoBehaviour
     private float verticalInput;
 
     private Vector3 moveDirection;
-
     private Rigidbody playerRB;
-
     public MovementState state;
+
+    private bool canShoot = true;
 
     public enum MovementState
     {
@@ -59,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+        shootScript = GetComponent<Shooting>();
         playerRB.freezeRotation = true;
         canJump = true;
 
@@ -92,6 +97,26 @@ public class PlayerMovement : MonoBehaviour
 
         // UnCrouch
         if (Input.GetKeyUp(crouchKey)) { UnCrouch(); }
+
+        // Shoot
+        if (Input.GetKeyDown(shootKey))
+        {
+            if (canShoot)
+            {
+                shootScript.Shoot(playerCam);
+                StartCoroutine(CanPlayerShoot());
+            }
+        }
+    }
+
+    // time between the player being able to shoot -- Firerate
+    private IEnumerator CanPlayerShoot()
+    {
+        canShoot = false;
+
+        yield return new WaitForSeconds(0.2f);
+
+        canShoot = true;
     }
 
     private void StateHandler()

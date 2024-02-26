@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform playerCam;
-    private Shooting shootScript;
+    private Shooting shootScript; 
+    
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float walkSpeed;
@@ -167,16 +168,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 groundCheckHalfExtents = new Vector3(1f, 0.5f, 1f);
 
         // check ground using box cast to allow for slight coyote time on jumps
-        isGrounded = Physics.BoxCast(transform.position, groundCheckHalfExtents, Vector3.down, Quaternion.identity, playerHeight * 0.5f + 0.2f, ground);
+        //isGrounded = Physics.BoxCast(transform.position, groundCheckHalfExtents, Vector3.down, Quaternion.identity, playerHeight * 0.5f + 0.2f, ground);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
 
         Debug.Log(isGrounded);
     }
 
     private void ApplyDrag()
-    { 
+    {
         // handle drag
         if (isGrounded) { playerRB.drag = groundDrag; }
-        else { playerRB.drag = 0; }
+        else { playerRB.drag = groundDrag; }
     }
 
     private void SpeedControl()

@@ -13,6 +13,11 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private float frequency;
     [SerializeField] private float amplitude;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Update()
     {
         float dist = Vector3.Distance(gameObject.transform.position, player.transform.position);

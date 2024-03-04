@@ -9,6 +9,7 @@ public class FirstPersonController : MonoBehaviour
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) && characterController.isGrounded) || (Input.GetKeyDown(jumpKey) && canDoubleJump && remainingJumps > 0); // replace isGrounded with a different check for double jumping if double jumping is enabled
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
     private bool ShouldShoot => canShoot && Input.GetKeyDown(shootKey);
+    private bool ShouldDash => Input.GetKeyDown(dashKey) && canDash;
 
     [Header("Functional Options")]
     [SerializeField] private bool canSprint = true;
@@ -20,11 +21,14 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private KeyCode jumpKey = KeyCode.Space;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode shootKey = KeyCode.Mouse0;
+    [SerializeField] private KeyCode dashKey = KeyCode.E;
 
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 6.0f;
     [SerializeField] private float sprintSpeed = 12.0f;
     [SerializeField] private float crouchSpeed = 3.0f;
+    [SerializeField] private float dashSpeed = 2000.0f;
+    [SerializeField] private bool canDash = false;
     
 
     [Header("Look Parameters")]
@@ -79,6 +83,7 @@ public class FirstPersonController : MonoBehaviour
             if (canJump) { HandleJump(); }
             if (canCrouch) { HandleCrouch(); }
             if (canShoot) { HandleShoot(); }
+            if (canDash) { HandleDash(); }
 
             ApplyFinalMovements();
         }
@@ -123,6 +128,18 @@ public class FirstPersonController : MonoBehaviour
         {
             shootScript.Shoot(playerCamera.transform);
             StartCoroutine(CanPlayerShoot());
+        }
+    }
+
+    private void HandleDash()
+    {
+        if (ShouldDash) 
+        {
+            currentInput = new Vector2((ShouldDash ? dashSpeed : walkSpeed) * Input.GetAxis("Vertical"), (ShouldDash ? dashSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
+
+            float moveDirectionY = moveDirection.y;
+            moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
+            moveDirection.y = moveDirectionY;
         }
     }
 

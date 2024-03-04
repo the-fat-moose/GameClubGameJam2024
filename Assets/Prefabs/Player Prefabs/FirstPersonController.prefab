@@ -204,9 +204,12 @@ MonoBehaviour:
   jumpKey: 32
   crouchKey: 99
   shootKey: 323
+  dashKey: 101
   walkSpeed: 3
   sprintSpeed: 9
   crouchSpeed: 3
+  dashSpeed: 2000
+  canDash: 0
   lookSpeedX: 2
   lookSpeedY: 2
   upperLookLimit: 80

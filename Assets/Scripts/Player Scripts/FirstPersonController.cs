@@ -6,7 +6,7 @@ public class FirstPersonController : MonoBehaviour
 {
     public bool CanMove { get; private set; } = true;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
-    private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded; // replace isGrounded with a different check for double jumping if double jumping is enabled
+    private bool ShouldJump => (Input.GetKeyDown(jumpKey) && characterController.isGrounded) || (Input.GetKeyDown(jumpKey) && canDoubleJump && remainingJumps > 0); // replace isGrounded with a different check for double jumping if double jumping is enabled
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
     private bool ShouldShoot => canShoot && Input.GetKeyDown(shootKey);
 
@@ -36,6 +36,8 @@ public class FirstPersonController : MonoBehaviour
     [Header("Jumping Parameters")]
     [SerializeField] private float jumpForce = 8.0f;
     [SerializeField] private float gravity = 30.0f;
+    [SerializeField] private bool canDoubleJump = false;
+    private int remainingJumps = 1;
 
     [Header("Crouch Parameters")]
     [SerializeField] private float crouchHeight = 0.5f;
@@ -84,6 +86,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleMovementInput()
     {
+        if (characterController.isGrounded && canDoubleJump) { remainingJumps = 1; } // resets the players ability to doublejump upon hitting the ground
+
         currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
 
         float moveDirectionY = moveDirection.y;
@@ -101,7 +105,11 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (ShouldJump) { moveDirection.y = jumpForce; }
+        if (ShouldJump) 
+        {
+            moveDirection.y = jumpForce;
+            if (canDoubleJump && !characterController.isGrounded) { remainingJumps = 0; }
+        }
     }
 
     private void HandleCrouch()

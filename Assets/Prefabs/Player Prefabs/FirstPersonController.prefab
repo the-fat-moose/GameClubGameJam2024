@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 997945490013769026}
   m_Layer: 0
   m_Name: FirstPersonController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   lowerLookLimit: 80
   jumpForce: 8
   gravity: 20
+  canDoubleJump: 0
   crouchHeight: 0
   standingHeight: 2
   timeToCrouch: 0.25

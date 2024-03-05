@@ -10,12 +10,12 @@ public class CageController : MonoBehaviour
     private float speed = 3f;
 
     [Header("Bobbing Animation")]
-    [SerializeField] private float frequency;
-    [SerializeField] private float amplitude;
+    Animator cageAnimator;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        cageAnimator = GetComponent<Animator>();
     }
 
     private void Update()

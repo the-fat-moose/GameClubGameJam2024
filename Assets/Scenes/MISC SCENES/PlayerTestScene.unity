@@ -1372,10 +1372,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7230873396921562708, guid: 3d69333f31ebd7449b2f72d173c6a191, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7402439280880741725, guid: 3d69333f31ebd7449b2f72d173c6a191, type: 3}
       propertyPath: m_Name
       value: CreatureCage

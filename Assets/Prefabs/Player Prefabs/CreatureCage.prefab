@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2344403928011513281}
   - component: {fileID: 4097012481023615206}
-  - component: {fileID: 7230873396921562708}
+  - component: {fileID: 2414837328280358540}
   m_Layer: 0
   m_Name: CreatureCage
   m_TagString: Untagged
@@ -138,7 +138,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7230873396921562708
+--- !u!114 &2414837328280358540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,11 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7402439280880741725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e61b6c3b9222d4eb56dd9a15e838e7, type: 3}
+  m_Script: {fileID: 11500000, guid: de90f8718def5dc4281918dac369a2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  stopDist: 2.5
-  speed: 5
-  frequency: 1
-  amplitude: 1
+  stopDist: 2
+  speed: 3
+  frequency: 0
+  amplitude: 0

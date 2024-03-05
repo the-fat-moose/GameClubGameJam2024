@@ -133,9 +133,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2783667788850588832}
-  - component: {fileID: 2035517905837024917}
-  - component: {fileID: 382692890123449026}
   - component: {fileID: 997945490013769026}
+  - component: {fileID: 2124320761392859462}
+  - component: {fileID: 1899031837781276136}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -159,7 +159,23 @@ Transform:
   - {fileID: 1608569296211842453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &2035517905837024917
+--- !u!114 &997945490013769026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923985125646791163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587e60f116acf9243abe6811713a89e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  range: 100
+  gunTip: {fileID: 7077351107053120604}
+  lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!143 &2124320761392859462
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,7 +201,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &382692890123449026
+--- !u!114 &1899031837781276136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,8 +221,8 @@ MonoBehaviour:
   crouchKey: 99
   shootKey: 323
   dashKey: 101
-  walkSpeed: 3
-  sprintSpeed: 9
+  walkSpeed: 6
+  sprintSpeed: 12
   crouchSpeed: 3
   dashSpeed: 2000
   canDash: 0
@@ -217,27 +233,11 @@ MonoBehaviour:
   jumpForce: 8
   gravity: 20
   canDoubleJump: 0
-  crouchHeight: 0
+  crouchHeight: 0.5
   standingHeight: 2
   timeToCrouch: 0.25
   crouchingCenterPoint: {x: 0, y: 0.5, z: 0}
   standingCenterPoint: {x: 0, y: 0, z: 0}
---- !u!114 &997945490013769026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923985125646791163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587e60f116acf9243abe6811713a89e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  range: 100
-  gunTip: {fileID: 7077351107053120604}
-  lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &8741076792453905813
 GameObject:
   m_ObjectHideFlags: 0

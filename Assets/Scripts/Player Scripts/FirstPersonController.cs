@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
     public bool CanMove { get; private set; } = true;
@@ -39,7 +40,7 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Jumping Parameters")]
     [SerializeField] private float jumpForce = 8.0f;
-    [SerializeField] private float gravity = 30.0f;
+    [SerializeField] private float gravity = 20.0f;
     [SerializeField] private bool canDoubleJump = false;
     private int remainingJumps = 1;
 

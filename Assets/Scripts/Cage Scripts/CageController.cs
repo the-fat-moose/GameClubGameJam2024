@@ -6,8 +6,8 @@ public class CageController : MonoBehaviour
 {
     [Header("Following Player")]
     [SerializeField] private GameObject player;
-    [SerializeField] private float stopDist;
-    [SerializeField] private float speed;
+    private float stopDist = 2f;
+    private float speed = 3f;
 
     [Header("Bobbing Animation")]
     [SerializeField] private float frequency;

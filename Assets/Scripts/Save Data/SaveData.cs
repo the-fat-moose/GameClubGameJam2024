@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveData
 {
     // player save data
+    public int upgradePoints;
     public int bulletDamageLevel;
     public int bulletRangeLevel;
     public int gunReloadSpeedLevel;
@@ -22,6 +23,7 @@ public class SaveData
     public SaveData (UpgradeBench upgrade, Bestiary bestiary)
     {
         // upgrade save data
+        upgradePoints = upgrade.upgradePoints;
         bulletDamageLevel = upgrade.bulletDamageLevel;
         bulletRangeLevel = upgrade.bulletRangeLevel;
         gunReloadSpeedLevel = upgrade.gunReloadSpeedLevel;
@@ -30,12 +32,15 @@ public class SaveData
         // bestiary save data
         for (int i = 0; i < bestiary.creaturesCaught.Length; i++)
         {
-            name[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().name;
-            time[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().time;
-            grade[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().grade;
-            rarity[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().rarity;
-            description[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().description;
-            ability[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().ability;
+            if (bestiary.creaturesCaught[i].GetComponent<Creature>() != null)
+            {
+                name[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().name;
+                time[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().time;
+                grade[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().grade;
+                rarity[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().rarity;
+                description[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().description;
+                ability[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().ability;
+            }
         }
     }
 }

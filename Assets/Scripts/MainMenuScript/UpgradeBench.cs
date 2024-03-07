@@ -23,54 +23,54 @@ public class UpgradeBench : MonoBehaviour
     private void Start()
     {
         // initialize display of variables in level
-        upgradePointsText.text = upgradePoints.ToString();
-        bulletDamageLevelText.text = bulletDamageLevel.ToString();
-        bulletRangeLevelText.text = bulletRangeLevel.ToString();
-        gunReloadSpeedLevelText.text = gunReloadSpeedLevel.ToString();
-        creatureCageHealthLevelText.text = creatureCageHealthLevel.ToString();
+        upgradePointsText.text = "Skill Points Left: " + upgradePoints.ToString();
+        bulletDamageLevelText.text = "Level: " + bulletDamageLevel.ToString();
+        bulletRangeLevelText.text = "Level: " + bulletRangeLevel.ToString();
+        gunReloadSpeedLevelText.text = "Level: " + gunReloadSpeedLevel.ToString();
+        creatureCageHealthLevelText.text = "Level: " + creatureCageHealthLevel.ToString();
     }
 
-    private void OnUpgradeBulletDamageClick()
+    public void OnUpgradeBulletDamageClick()
     {
         if (upgradePoints > 0) 
         {
             bulletDamageLevel++;
-            bulletDamageLevelText.text = bulletDamageLevel.ToString();
+            bulletDamageLevelText.text = "Level: " + bulletDamageLevel.ToString();
             upgradePoints--;
-            upgradePointsText.text = upgradePoints.ToString();
+            upgradePointsText.text = "Skill Points Left: " + upgradePoints.ToString();
         }
     }
 
-    private void OnUpgradeBulletRangeClick()
+    public void OnUpgradeBulletRangeClick()
     {
         if (upgradePoints > 0)
         {
             bulletRangeLevel++;
-            bulletRangeLevelText.text = bulletRangeLevel.ToString();
+            bulletRangeLevelText.text = "Level: " + bulletRangeLevel.ToString();
             upgradePoints--;
-            upgradePointsText.text = upgradePoints.ToString();
+            upgradePointsText.text = "Skill Points Left: " + upgradePoints.ToString();
         }
     }
 
-    private void OnUpgradeGunReloadSpeedClick()
+    public void OnUpgradeGunReloadSpeedClick()
     {
         if (upgradePoints > 0)
         {
             gunReloadSpeedLevel++;
-            gunReloadSpeedLevelText.text = gunReloadSpeedLevel.ToString();
+            gunReloadSpeedLevelText.text = "Level: " + gunReloadSpeedLevel.ToString();
             upgradePoints--;
-            upgradePointsText.text = upgradePoints.ToString();
+            upgradePointsText.text = "Skill Points Left: " + upgradePoints.ToString();
         }
     }
 
-    private void OnUpgradeCageHealthClick()
+    public void OnUpgradeCageHealthClick()
     {
         if (upgradePoints > 0)
         {
             creatureCageHealthLevel++;
-            creatureCageHealthLevelText.text = creatureCageHealthLevel.ToString();
+            creatureCageHealthLevelText.text = "Level: " + creatureCageHealthLevel.ToString();
             upgradePoints--;
-            upgradePointsText.text = upgradePoints.ToString();
+            upgradePointsText.text = "Skill Points Left: " + upgradePoints.ToString();
         }
     }
 }

@@ -35,7 +35,9 @@ public class UpgradeBench : MonoBehaviour
         if (upgradePoints > 0) 
         {
             bulletDamageLevel++;
+            bulletDamageLevelText.text = bulletDamageLevel.ToString();
             upgradePoints--;
+            upgradePointsText.text = upgradePoints.ToString();
         }
     }
 
@@ -44,7 +46,9 @@ public class UpgradeBench : MonoBehaviour
         if (upgradePoints > 0)
         {
             bulletRangeLevel++;
+            bulletRangeLevelText.text = bulletRangeLevel.ToString();
             upgradePoints--;
+            upgradePointsText.text = upgradePoints.ToString();
         }
     }
 
@@ -53,7 +57,9 @@ public class UpgradeBench : MonoBehaviour
         if (upgradePoints > 0)
         {
             gunReloadSpeedLevel++;
+            gunReloadSpeedLevelText.text = gunReloadSpeedLevel.ToString();
             upgradePoints--;
+            upgradePointsText.text = upgradePoints.ToString();
         }
     }
 
@@ -62,7 +68,9 @@ public class UpgradeBench : MonoBehaviour
         if (upgradePoints > 0)
         {
             creatureCageHealthLevel++;
+            creatureCageHealthLevelText.text = creatureCageHealthLevel.ToString();
             upgradePoints--;
+            upgradePointsText.text = upgradePoints.ToString();
         }
     }
 }

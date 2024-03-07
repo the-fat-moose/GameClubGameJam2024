@@ -7,6 +7,9 @@ public class Shooting : MonoBehaviour
     [Header("Basic Gun Mechanics")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float range = 100f;
+    private int bulletCount = 10;
+    private float reloadTime = 2f;
+    private bool canShoot = true; // used to not allow spam of reload
 
     [Header("Gunshot Drawing")]
     [SerializeField] Transform gunTip;
@@ -14,6 +17,16 @@ public class Shooting : MonoBehaviour
     private LineRenderer lr;
 
     RaycastHit hit;
+
+    [SerializeField] KeyCode reloadKey = KeyCode.R;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(reloadKey))
+        {
+            if (bulletCount < 10 && canShoot) { StartCoroutine(Reload()); }
+        }
+    }
 
     private void LateUpdate()
     {
@@ -24,17 +37,24 @@ public class Shooting : MonoBehaviour
     {
         if (Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, range))
         {
-            if (gameObject.GetComponent<LineRenderer>() == null)
+            if (bulletCount > 0 && canShoot)
             {
-                lr = gameObject.AddComponent<LineRenderer>();
-            }
-            lr.positionCount = 2;
+                if (gameObject.GetComponent<LineRenderer>() == null)
+                {
+                    lr = gameObject.AddComponent<LineRenderer>();
+                }
+                lr.positionCount = 2;
 
-            Target currentTarget = hit.transform.GetComponent<Target>();
-            if (currentTarget != null)
-            {
-                currentTarget.TakeDamage(damage);
-            }
+                Target currentTarget = hit.transform.GetComponent<Target>();
+                if (currentTarget != null)
+                {
+                    currentTarget.TakeDamage(damage);
+                }
+
+                bulletCount--;
+                Debug.Log("Bullets remaining: " + bulletCount);
+                if (bulletCount <= 0 && canShoot) { StartCoroutine(Reload()); }
+            } else if (canShoot) { StartCoroutine(Reload()); }
         }
     }
 
@@ -57,5 +77,17 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         Destroy(lr);
+    }
+
+    private IEnumerator Reload()
+    {
+        Debug.Log("Reloading");
+        canShoot = false;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        bulletCount = 10;
+        Debug.Log("Reload Complete");
+        canShoot = true;
     }
 }

@@ -10,6 +10,9 @@ public class Shooting : MonoBehaviour
     private int bulletCount = 10;
     private float reloadTime = 2f;
     private bool canShoot = true; // used to not allow spam of reload
+    private float damageMultiplier = 5f;
+    private bool damageMultiplierEnabled = true;
+
 
     [Header("Gunshot Drawing")]
     [SerializeField] Transform gunTip;
@@ -48,7 +51,8 @@ public class Shooting : MonoBehaviour
                 Target currentTarget = hit.transform.GetComponent<Target>();
                 if (currentTarget != null)
                 {
-                    currentTarget.TakeDamage(damage);
+                    if (damageMultiplierEnabled) { currentTarget.TakeDamage(damage * damageMultiplier); }
+                    else { currentTarget.TakeDamage(damage); }
                 }
 
                 bulletCount--;

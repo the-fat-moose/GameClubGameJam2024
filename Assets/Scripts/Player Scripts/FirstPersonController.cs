@@ -30,6 +30,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchSpeed = 3.0f;
     [SerializeField] private float dashSpeed = 2000.0f;
     [SerializeField] private bool canDash = false;
+    private float dashCooldown = 12.5f;
     
 
     [Header("Look Parameters")]
@@ -141,6 +142,8 @@ public class FirstPersonController : MonoBehaviour
             float moveDirectionY = moveDirection.y;
             moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
             moveDirection.y = moveDirectionY;
+
+            StartCoroutine(DashCooldown());
         }
     }
 
@@ -187,5 +190,17 @@ public class FirstPersonController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         canShoot = true;
+    }
+
+    // time between the player being able to dash -- Dash Cooldown
+    private IEnumerator DashCooldown()
+    {
+        Debug.Log("Start Dash cooldown");
+        canDash = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        Debug.Log("End Dash cooldown");
+        canDash = true;
     }
 }

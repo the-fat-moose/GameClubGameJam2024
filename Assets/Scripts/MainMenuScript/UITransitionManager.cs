@@ -29,4 +29,8 @@ public class UITransitionManager : MonoBehaviour
 
         currentCamera.Priority++;
     }
+    public void MainMenuCam()
+    {
+        UpdateCamera(mainmenuCam);
+    }
 }

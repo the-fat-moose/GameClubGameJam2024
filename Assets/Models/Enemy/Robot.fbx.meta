@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 109e688f9be12ce48962cc01f7b8c168
+guid: 514d33ce874f6e04884ae583c1e53341
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Robot_Mat
-    second: {fileID: 2100000, guid: d21e00f1d2075204ea902ce4734abd6c, type: 2}
+    second: {fileID: 2100000, guid: 5e57d2dd37aa31546b214c317a3227f1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

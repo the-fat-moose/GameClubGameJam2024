@@ -94,4 +94,13 @@ public class Shooting : MonoBehaviour
         Debug.Log("Reload Complete");
         canShoot = true;
     }
+
+    private IEnumerator DamageMultiplierDuration()
+    {
+        damageMultiplierEnabled = true;
+
+        yield return new WaitForSeconds(5f);
+
+        damageMultiplierEnabled = false;
+    }
 }

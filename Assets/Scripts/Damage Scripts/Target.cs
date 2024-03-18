@@ -11,16 +11,16 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
-        healthBar.value = health;
+        //healthBar.value = health;
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        healthBar.value = health;
+        //healthBar.value = health;
         if (health <= 0f)
         {
-            if (this.gameObject.CompareTag("Player"))
+            if (this.gameObject.CompareTag("CreatureCage"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }

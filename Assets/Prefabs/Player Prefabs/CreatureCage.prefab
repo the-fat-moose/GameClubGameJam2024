@@ -95,9 +95,10 @@ GameObject:
   - component: {fileID: 4097012481023615206}
   - component: {fileID: 2414837328280358540}
   - component: {fileID: 4027186339632664222}
+  - component: {fileID: 4530093581826359793}
   m_Layer: 0
   m_Name: CreatureCage
-  m_TagString: Untagged
+  m_TagString: CreatureCage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,3 +174,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4530093581826359793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7402439280880741725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f0b2229d7c27341b911c79c32987b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

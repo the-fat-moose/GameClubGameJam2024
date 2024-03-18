@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float damage = 10f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("CreatureCage"))
+        {
+            if (other.GetComponent<CageTarget>() != null)
+            {
+                other.GetComponent<CageTarget>().TakeDamage(damage);
+            }
+            Destroy(gameObject);
+        }
+        else if (!other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

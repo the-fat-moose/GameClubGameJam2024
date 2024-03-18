@@ -30,7 +30,7 @@ public class EnemyAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("FirstPersonController").transform;
+        player = GameObject.Find("CreatureCage").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 

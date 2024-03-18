@@ -20,11 +20,7 @@ public class Target : MonoBehaviour
         //healthBar.value = health;
         if (health <= 0f)
         {
-            if (this.gameObject.CompareTag("CreatureCage"))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            else if (this.gameObject.CompareTag("Enemy"))
+            if (this.gameObject.CompareTag("Enemy"))
             {
                 Destroy(gameObject);
             }

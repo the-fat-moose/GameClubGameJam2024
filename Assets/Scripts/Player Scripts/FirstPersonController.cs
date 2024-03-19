@@ -23,6 +23,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode shootKey = KeyCode.Mouse0;
     [SerializeField] private KeyCode dashKey = KeyCode.E;
+    [SerializeField] private KeyCode creatureCageHealKey = KeyCode.F;
 
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 6.0f;
@@ -57,6 +58,11 @@ public class FirstPersonController : MonoBehaviour
     [Header("Shooting Parameters")]
     private bool canShoot = true;
 
+    [Header("Cage Parameters")]
+    [SerializeField] private GameObject creatureCage;
+    public int cageMaterialPickups { get; set; } = 0;
+    private float healAmount = 10f;
+
     private Camera playerCamera;
     private CharacterController characterController;
     private Shooting shootScript;
@@ -75,6 +81,11 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void Start()
+    {
+        creatureCage = GameObject.Find("CreatureCage");
+    }
+
     void Update()
     {
         if (CanMove)
@@ -86,6 +97,7 @@ public class FirstPersonController : MonoBehaviour
             if (canCrouch) { HandleCrouch(); }
             if (canShoot) { HandleShoot(); }
             if (canDash) { HandleDash(); }
+            if (Input.GetKeyUp(creatureCageHealKey) && creatureCage != null && creatureCage.GetComponent<CageTarget>().canHeal && cageMaterialPickups >= 1) { HandleHeal(); }
 
             ApplyFinalMovements();
         }
@@ -144,6 +156,15 @@ public class FirstPersonController : MonoBehaviour
             moveDirection.y = moveDirectionY;
 
             StartCoroutine(DashCooldown());
+        }
+    }
+
+    private void HandleHeal()
+    {
+        if (creatureCage.GetComponent<CageTarget>().currentHealth < creatureCage.GetComponent<CageTarget>().maxHealth) 
+        {
+            creatureCage.GetComponent<CageTarget>().IncreaseHealth(healAmount);
+            cageMaterialPickups--;
         }
     }
 

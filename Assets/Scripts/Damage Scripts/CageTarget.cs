@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CageTarget : MonoBehaviour
 {
-    private float maxHealth = 100f;
-    private float currentHealth;
+    public float maxHealth { get; private set; } = 100f;
+    public float currentHealth { get; private set; }
     private float damageReductionPercentage = 0.75f;
     public bool hasDamageReduction { get; set; } = false;
+    public bool canHeal { get; private set; } = false;
 
     private void Start()
     {
@@ -19,11 +20,24 @@ public class CageTarget : MonoBehaviour
         if (hasDamageReduction) { currentHealth -= amount * damageReductionPercentage; }
         else { currentHealth -= amount; }
 
+        canHeal = true;
+
         Debug.Log("Current Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void IncreaseHealth(float amount)
+    {
+        currentHealth += amount;
+
+        if (currentHealth >= maxHealth) 
+        {
+            currentHealth = maxHealth;
+            canHeal = false;
         }
     }
 }

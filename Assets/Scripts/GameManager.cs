@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        /*timeElapsed += Time.deltaTime;
-        DisplayTimer(timeElapsed);*/
+        timeElapsed += Time.deltaTime;
+        DisplayTimer(timeElapsed);
     }
 
     private void DisplayTimer(float timer)
@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
         float sec = Mathf.FloorToInt(timer % 60);
 
         string displayTime = string.Format("{00}:{1:00}", min, sec);
-
-        Debug.Log(displayTime);
     }
 
     private void SelectAbility()

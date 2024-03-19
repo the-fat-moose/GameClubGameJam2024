@@ -6,6 +6,8 @@ public class CageTarget : MonoBehaviour
 {
     private float maxHealth = 100f;
     private float currentHealth;
+    private float damageReductionPercentage = 0.75f;
+    public bool hasDamageReduction { get; set; } = false;
 
     private void Start()
     {
@@ -14,7 +16,9 @@ public class CageTarget : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
+        if (hasDamageReduction) { currentHealth -= amount * damageReductionPercentage; }
+        else { currentHealth -= amount; }
+
         Debug.Log("Current Health: " + currentHealth);
 
         if (currentHealth <= 0)

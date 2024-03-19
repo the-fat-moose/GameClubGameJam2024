@@ -11,8 +11,9 @@ public class Shooting : MonoBehaviour
     private float reloadTime = 2f;
     private bool canShoot = true; // used to not allow spam of reload
     private float damageMultiplier = 5f;
-    private bool damageMultiplierEnabled = true;
-
+    private bool damageMultiplierEnabled = false;
+    public bool canActivateDamageBoost { get; set; } = false;
+    public bool canDamageBoost { get; set; } = false;
 
     [Header("Gunshot Drawing")]
     [SerializeField] Transform gunTip;
@@ -21,13 +22,19 @@ public class Shooting : MonoBehaviour
 
     RaycastHit hit;
 
+    [Header("Controls")]
     [SerializeField] KeyCode reloadKey = KeyCode.R;
+    [SerializeField] KeyCode damageMultiplierKey = KeyCode.E;
 
     private void Update()
     {
         if (Input.GetKeyDown(reloadKey))
         {
             if (bulletCount < 10 && canShoot) { StartCoroutine(Reload()); }
+        }
+        if (Input.GetKeyDown(damageMultiplierKey) && canDamageBoost)
+        {
+            if (canActivateDamageBoost) { StartCoroutine(DamageMultiplierDuration()); }
         }
     }
 
@@ -98,9 +105,23 @@ public class Shooting : MonoBehaviour
     private IEnumerator DamageMultiplierDuration()
     {
         damageMultiplierEnabled = true;
+        canActivateDamageBoost = false;
+        Debug.Log("Damage boost ENABLED");
 
         yield return new WaitForSeconds(5f);
 
         damageMultiplierEnabled = false;
+        Debug.Log("Damage boost DISABLED");
+        StartCoroutine(DamageMultiplierCooldown());
+    }
+
+    public IEnumerator DamageMultiplierCooldown()
+    {
+        Debug.Log("Damage boost NOT READY");
+
+        yield return new WaitForSeconds(10f);
+
+        canActivateDamageBoost = true;
+        Debug.Log("Damage boost READY");
     }
 }

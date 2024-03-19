@@ -9,13 +9,9 @@ public class CageController : MonoBehaviour
     private float stopDist = 2f;
     private float speed = 3f;
 
-    [Header("Bobbing Animation")]
-    Animator cageAnimator;
-
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        cageAnimator = GetComponent<Animator>();
     }
 
     private void Update()

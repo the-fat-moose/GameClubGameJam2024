@@ -29,7 +29,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 12.0f;
     [SerializeField] private float crouchSpeed = 3.0f;
     [SerializeField] private float dashSpeed = 2000.0f;
-    [SerializeField] private bool canDash = false;
+    public bool canDash { get; set; } = false;
     private float dashCooldown = 12.5f;
     
 
@@ -42,7 +42,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Jumping Parameters")]
     [SerializeField] private float jumpForce = 8.0f;
     [SerializeField] private float gravity = 20.0f;
-    [SerializeField] private bool canDoubleJump = false;
+    public bool canDoubleJump { get; set; } = false;
     private int remainingJumps = 1;
 
     [Header("Crouch Parameters")]

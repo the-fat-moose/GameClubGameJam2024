@@ -4,14 +4,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveUserData(UpgradeBench upgrade, Bestiary bestiary)
+    public static void SaveUserData(Bestiary bestiary)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
         string path = Application.persistentDataPath + "/saveData.critr";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveData data = new SaveData(upgrade, bestiary);
+        SaveData data = new SaveData(bestiary);
 
         formatter.Serialize(stream, data);
         stream.Close();

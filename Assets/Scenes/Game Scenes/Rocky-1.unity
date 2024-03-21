@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44485164, g: 0.48852444, b: 0.5418915, a: 1}
+  m_IndirectSpecularColor: {r: 0.06781944, g: 0.27394506, b: 0.484644, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5068,7 +5068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &167089975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7019,7 +7019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &230720291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9891,7 +9891,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1b6b5a07fb0ba44469ccb1cfe58928ba, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_Name
-      value: SciFiPad (1)
+      value: SciFiPad-End
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -33505,7 +33505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1626888669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35856,7 +35856,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1764215499
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38629,7 +38629,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1b6b5a07fb0ba44469ccb1cfe58928ba, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_Name
-      value: SciFiPad
+      value: SciFiPad-Start
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -40517,7 +40517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2022395538
 RectTransform:
   m_ObjectHideFlags: 0

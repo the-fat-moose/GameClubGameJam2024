@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         {
             timeElapsed += Time.deltaTime;
         }
-        DisplayTimer(timeElapsed);
+        SetTimerString(timeElapsed);
     }
 
     public void FindPlayerItems(GameObject _player, GameObject _creatureCage)
@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<FirstPersonController>() != null && creatureCage.GetComponent<CageTarget>() != null) { SelectAbility(); }
     }
 
-    private void DisplayTimer(float timer)
+    private void SetTimerString(float timer)
     { 
         float min = Mathf.FloorToInt(timer / 60);
         float sec = Mathf.FloorToInt(timer % 60);
 
         string displayTime = string.Format("{00}:{1:00}", min, sec);
+
+        if (player.GetComponentInChildren<PlayerUIManager>() != null) { player.GetComponentInChildren<PlayerUIManager>().GetTimer(displayTime); }
     }
 
     private void SelectAbility()

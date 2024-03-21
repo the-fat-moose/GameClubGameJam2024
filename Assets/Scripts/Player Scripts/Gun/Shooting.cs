@@ -7,7 +7,8 @@ public class Shooting : MonoBehaviour
     [Header("Basic Gun Mechanics")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float range = 100f;
-    private int bulletCount = 10;
+    public int currentBulletCount { get; private set; } = 10;
+    public int maxBulletCount { get; private set; } = 10;
     private float reloadTime = 2f;
     private bool canShoot = true; // used to not allow spam of reload
     private float damageMultiplier = 5f;
@@ -26,11 +27,18 @@ public class Shooting : MonoBehaviour
     [SerializeField] KeyCode reloadKey = KeyCode.R;
     [SerializeField] KeyCode damageMultiplierKey = KeyCode.E;
 
+    PlayerUIManager playerUIManager;
+
+    private void Start()
+    {
+        playerUIManager = GetComponentInChildren<PlayerUIManager>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(reloadKey))
         {
-            if (bulletCount < 10 && canShoot) { StartCoroutine(Reload()); }
+            if (currentBulletCount < 10 && canShoot) { StartCoroutine(Reload()); }
         }
         if (Input.GetKeyDown(damageMultiplierKey) && canDamageBoost)
         {
@@ -47,7 +55,7 @@ public class Shooting : MonoBehaviour
     {
         if (Physics.Raycast(shootPoint.position, shootPoint.forward, out hit, range))
         {
-            if (bulletCount > 0 && canShoot)
+            if (currentBulletCount > 0 && canShoot)
             {
                 if (gameObject.GetComponent<LineRenderer>() == null)
                 {
@@ -62,9 +70,9 @@ public class Shooting : MonoBehaviour
                     else { currentTarget.TakeDamage(damage); }
                 }
 
-                bulletCount--;
-                Debug.Log("Bullets remaining: " + bulletCount);
-                if (bulletCount <= 0 && canShoot) { StartCoroutine(Reload()); }
+                currentBulletCount--;
+                playerUIManager.GetAmmoCount(currentBulletCount, maxBulletCount);
+                if (currentBulletCount <= 0 && canShoot) { StartCoroutine(Reload()); }
             } else if (canShoot) { StartCoroutine(Reload()); }
         }
     }
@@ -92,13 +100,13 @@ public class Shooting : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        Debug.Log("Reloading");
         canShoot = false;
+        playerUIManager.DisplayReloading();
 
         yield return new WaitForSeconds(reloadTime);
 
-        bulletCount = 10;
-        Debug.Log("Reload Complete");
+        currentBulletCount = maxBulletCount;
+        playerUIManager.GetAmmoCount(currentBulletCount, maxBulletCount);
         canShoot = true;
     }
 

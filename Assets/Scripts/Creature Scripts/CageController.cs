@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CageController : MonoBehaviour
-{
-    [Header("Following Player")]
-    [SerializeField] private GameObject player;
+{ 
+    public GameObject player { get; private set; }
     private float stopDist = 4f;
     private float speedUpDist = 10f;
     private float speed = 3f;

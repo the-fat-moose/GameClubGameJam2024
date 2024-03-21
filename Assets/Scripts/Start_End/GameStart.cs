@@ -28,6 +28,14 @@ public class GameStart : MonoBehaviour
         creatureCage = GameObject.Instantiate(creatureCagePref, new Vector3((gameObject.transform.position.x + 10f), (gameObject.transform.position.y + 1f), gameObject.transform.position.z), gameObject.transform.rotation);
 
         if (gameManager.GetComponent<GameManager>() != null) { gameManager.GetComponent<GameManager>().FindPlayerItems(firstPersonController, creatureCage); } // assign first person controller and creature cage to the game manager
+        if (firstPersonController != null)
+        {
+            if (firstPersonController.GetComponent<FirstPersonController>() != null && firstPersonController.GetComponentInChildren<PlayerUIManager>() != null) 
+            { 
+                firstPersonController.GetComponent<FirstPersonController>().SetCreatureCage(creatureCage);
+                firstPersonController.GetComponentInChildren<PlayerUIManager>().InitializeUI();
+            }
+        }
     }
 
     private void StartGameTimer(GameObject manager)

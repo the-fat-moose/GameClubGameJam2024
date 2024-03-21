@@ -6,13 +6,22 @@ public class CageTarget : MonoBehaviour
 {
     public float maxHealth { get; private set; } = 100f;
     public float currentHealth { get; private set; }
+    public float healthPercentage { get; private set; } = 1.0f;
     private float damageReductionPercentage = 0.75f;
     public bool hasDamageReduction { get; set; } = false;
     public bool canHeal { get; private set; } = false;
 
+    CageController controller;
+    PlayerUIManager playerUIManager;
+
     private void Start()
     {
+        controller = GetComponent<CageController>();
+        playerUIManager = controller.player.GetComponent<PlayerUIManager>();
+
         currentHealth = maxHealth;
+
+        SetHealthPercentage();
     }
 
     public void TakeDamage(float amount)
@@ -20,9 +29,8 @@ public class CageTarget : MonoBehaviour
         if (hasDamageReduction) { currentHealth -= amount * damageReductionPercentage; }
         else { currentHealth -= amount; }
 
+        SetHealthPercentage();
         canHeal = true;
-
-        Debug.Log("Current Health: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -34,10 +42,18 @@ public class CageTarget : MonoBehaviour
     {
         currentHealth += amount;
 
+        SetHealthPercentage();
         if (currentHealth >= maxHealth) 
         {
             currentHealth = maxHealth;
             canHeal = false;
         }
+    }
+
+    private void SetHealthPercentage()
+    {
+        healthPercentage = currentHealth / maxHealth;
+
+        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
     }
 }

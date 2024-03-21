@@ -66,27 +66,29 @@ public class FirstPersonController : MonoBehaviour
     private Camera playerCamera;
     private CharacterController characterController;
     private Shooting shootScript;
+    private PlayerUIManager playerUIManager;
 
     private Vector3 moveDirection;
     private Vector2 currentInput;
 
     private float rotationX = 0.0f; // used for look view clamping
 
-    void Awake()
+    private void Awake()
     {
         playerCamera = GetComponentInChildren<Camera>();
         characterController = GetComponent<CharacterController>();
         shootScript = GetComponent<Shooting>();
+        playerUIManager = GetComponentInChildren<PlayerUIManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    private void Start()
+    public void SetCreatureCage(GameObject _creatureCage)
     {
-        creatureCage = GameObject.Find("CreatureCage");
+        creatureCage = _creatureCage;
     }
 
-    void Update()
+    private void Update()
     {
         if (CanMove)
         {

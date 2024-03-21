@@ -10960,7 +10960,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 285a0b85a9817c347a8e59ebd3530610, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_Name
-      value: SciFiPad (1)
+      value: SciFiPad-End
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18785,7 +18785,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 285a0b85a9817c347a8e59ebd3530610, type: 2}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_Name
-      value: SciFiPad
+      value: SciFiPad-Start
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a949f0adc3c62440b0c5817d694f362, type: 3}
       propertyPath: m_StaticEditorFlags

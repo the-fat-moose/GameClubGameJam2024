@@ -66,3 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a200937adc7b844f9bc4260175cda8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPersonControllerPref: {fileID: 5923985125646791163, guid: d898702d07f14904ba8f02d1e07bd5fa, type: 3}
+  creatureCagePref: {fileID: 7402439280880741725, guid: 3d69333f31ebd7449b2f72d173c6a191, type: 3}
+  gameManagerPref: {fileID: 6475914982595814088, guid: 6bdfb6d73c8176b42af06647b718a03b, type: 3}

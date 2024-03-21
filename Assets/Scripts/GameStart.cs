@@ -4,15 +4,42 @@ using UnityEngine;
 
 public class GameStart : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Items to Spawn")]
+    [SerializeField] private GameObject firstPersonControllerPref;
+    [SerializeField] private GameObject creatureCagePref;
+    [SerializeField] private GameObject gameManagerPref;
+
+    private GameObject gameManager; // used to assign the game manager that is instatiated, for use OnTriggerExit
+    private GameObject firstPersonController; // used to assign the first person controller that is instantiated, for use on Start
+    private GameObject creatureCage; // used to assign the creature cage that is instantiated, for use on Start
+
+    private void Start()
     {
-        
+        if (firstPersonControllerPref != null && creatureCagePref != null && gameManagerPref != null) 
+        { 
+            SpawnStartingItems();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnStartingItems()
     {
-        
+        gameManager = GameObject.Instantiate(gameManagerPref, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        firstPersonController = GameObject.Instantiate(firstPersonControllerPref, new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y + 5f), gameObject.transform.position.z), gameObject.transform.rotation);
+        creatureCage = GameObject.Instantiate(creatureCagePref, new Vector3((gameObject.transform.position.x + 10f), (gameObject.transform.position.y + 1f), gameObject.transform.position.z), gameObject.transform.rotation);
+
+        if (gameManager.GetComponent<GameManager>() != null) { gameManager.GetComponent<GameManager>().FindPlayerItems(firstPersonController, creatureCage); } // assign first person controller and creature cage to the game manager
+    }
+
+    private void StartGameTimer(GameObject manager)
+    {
+        if (manager.GetComponent<GameManager>() != null) { manager.GetComponent<GameManager>().canTimerRun = true; }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartGameTimer(gameManager);
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,45 +9,23 @@ public class GameManager : MonoBehaviour
     private float timeElapsed = 0;
     private GameObject player;
     private GameObject creatureCage;
-
-    // called zero
-    private void Awake()
-    {
-        Debug.Log("Awake");
-        DontDestroyOnLoad(gameObject);
-    }
-
-    // called first
-    private void OnEnable()
-    {
-        Debug.Log("OnEnable called");
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    // called second
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log("mode: " + mode);
-    }
-
-    // called third
-    private void Start()
-    {
-        Debug.Log("Start");
-        player = GameObject.Find("FirstPersonController");
-        creatureCage = GameObject.Find("CreatureCage");
-
-        if (player != null && creatureCage != null)
-        {
-            SelectAbility();
-        }
-    }
+    public bool canTimerRun { get; set; } = false;
 
     private void Update()
     {
-        timeElapsed += Time.deltaTime;
+        if (canTimerRun)
+        {
+            timeElapsed += Time.deltaTime;
+        }
         DisplayTimer(timeElapsed);
+    }
+
+    public void FindPlayerItems(GameObject _player, GameObject _creatureCage)
+    {
+        player = _player;
+        creatureCage = _creatureCage;
+
+        if (player.GetComponent<FirstPersonController>() != null && creatureCage.GetComponent<CageTarget>() != null) { SelectAbility(); }
     }
 
     private void DisplayTimer(float timer)
@@ -85,12 +64,5 @@ public class GameManager : MonoBehaviour
                 player.GetComponent<FirstPersonController>().canDash = true;
                 break;
         }
-    }
-
-    // called when game is terminated
-    private void OnDisable()
-    {
-        Debug.Log("OnDisable");
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

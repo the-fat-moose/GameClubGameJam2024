@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject Enemy;
-    [SerializeField] private Transform Player;
+    [SerializeField] private GameObject enemy;
+    private Transform player;
 
     private int NumberOfEnemiesToSpawn;
     //private float spawnDelay = 1f;
@@ -15,11 +15,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        TotalEnemiesToSpawn(); //this is for seetting the amount of enemies to spawn based on the sneak step
+        TotalEnemiesToSpawn(); //this is for setting the amount of enemies to spawn based on the sneak step
     }
 
-    private void Start()
+    public void SetCreatureCage(GameObject _player)
     {
+        player = _player.transform;
+
         for (int i = 0; i < NumberOfEnemiesToSpawn; i++)
         {
             SpawnEnemy();
@@ -30,7 +32,8 @@ public class EnemySpawner : MonoBehaviour
     {
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
 
-        Instantiate(Enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
+        GameObject _enemy = Instantiate(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
+        if (_enemy.GetComponent<EnemyAi>() != null) { enemy.GetComponent<EnemyAi>().SetCreatureCage(player.gameObject); }
     }
 
     private void TotalEnemiesToSpawn()//this is going to be called multiple times and going to check for the bool even though it isnt going to change                                      

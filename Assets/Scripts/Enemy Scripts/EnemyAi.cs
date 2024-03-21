@@ -30,28 +30,35 @@ public class EnemyAi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("CreatureCage").transform;
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    public void SetCreatureCage(GameObject _player)
+    {
+        player = _player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (player != null)
+        {
+            //check for sight and attack range
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(!playerInSightRange && !playerInAttackRange)
-        {
-            Patroling();
-        }
-        if(playerInSightRange && !playerInAttackRange)
-        {
-            ChasePlayer();
-        }
-        if(playerInSightRange && playerInAttackRange)
-        {
-            AttackPlayer();
+            if (!playerInSightRange && !playerInAttackRange)
+            {
+                Patroling();
+            }
+            if (playerInSightRange && !playerInAttackRange)
+            {
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange)
+            {
+                AttackPlayer();
+            }
         }
     }
 

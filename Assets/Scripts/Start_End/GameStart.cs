@@ -8,6 +8,7 @@ public class GameStart : MonoBehaviour
     [SerializeField] private GameObject firstPersonControllerPref;
     [SerializeField] private GameObject creatureCagePref;
     [SerializeField] private GameObject gameManagerPref;
+    private GameObject enemySpawner;
 
     private GameObject gameManager; // used to assign the game manager that is instatiated, for use OnTriggerExit
     private GameObject firstPersonController; // used to assign the first person controller that is instantiated, for use on Start
@@ -15,7 +16,8 @@ public class GameStart : MonoBehaviour
 
     private void Start()
     {
-        if (firstPersonControllerPref != null && creatureCagePref != null && gameManagerPref != null) 
+        enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
+        if (firstPersonControllerPref != null && creatureCagePref != null && gameManagerPref != null && enemySpawner != null) 
         { 
             SpawnStartingItems();
         }
@@ -36,6 +38,7 @@ public class GameStart : MonoBehaviour
                 firstPersonController.GetComponentInChildren<PlayerUIManager>().InitializeUI();
             }
         }
+        if (enemySpawner.GetComponent<EnemySpawner>() != null) { enemySpawner.GetComponent<EnemySpawner>().SetCreatureCage(creatureCage); }
     }
 
     private void StartGameTimer(GameObject manager)

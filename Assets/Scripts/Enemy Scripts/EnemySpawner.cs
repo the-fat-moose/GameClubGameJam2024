@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     //private float spawnDelay = 1f;
     [SerializeField] private Transform[] spawnPoints;
 
-    private bool sneakStep; //<-----------BOOL FOR SNEAK STEP HERE SHELBY
+    public bool sneakStep { get; set; } = false; //<-----------BOOL FOR SNEAK STEP HERE SHELBY
 
     private void Awake()
     {

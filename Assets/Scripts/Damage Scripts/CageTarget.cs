@@ -13,15 +13,23 @@ public class CageTarget : MonoBehaviour
 
     CageController controller;
     PlayerUIManager playerUIManager;
+    private GameObject player;
 
     private void Start()
     {
         controller = GetComponent<CageController>();
-        playerUIManager = controller.player.GetComponent<PlayerUIManager>();
-
         currentHealth = maxHealth;
+    }
 
-        SetHealthPercentage();
+    public void SetPlayerObject(GameObject _player)
+    {
+        player = _player;
+
+        if (player != null) 
+        { 
+            playerUIManager = player.GetComponentInChildren<PlayerUIManager>(); 
+            if (playerUIManager != null ) { SetHealthPercentage(); }
+        }
     }
 
     public void TakeDamage(float amount)

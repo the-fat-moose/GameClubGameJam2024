@@ -12,6 +12,8 @@ public class CageController : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null) { gameObject.GetComponent<CageTarget>().SetPlayerObject(player); }        
     }
 
     private void Update()

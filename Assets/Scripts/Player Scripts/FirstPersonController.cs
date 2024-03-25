@@ -59,7 +59,7 @@ public class FirstPersonController : MonoBehaviour
     private bool canShoot = true;
 
     [Header("Cage Parameters")]
-    [SerializeField] private GameObject creatureCage;
+    public GameObject creatureCage { get; private set; } = null;
     public int cageMaterialPickups { get; set; } = 0;
     private float healAmount = 10f;
 

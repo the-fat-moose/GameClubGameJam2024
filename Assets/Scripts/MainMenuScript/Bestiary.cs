@@ -1,18 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bestiary : MonoBehaviour
 {
-    public GameObject[] creaturesCaught;
+    public List<GameObject> creaturesCaught = new List<GameObject>();
 
-    public void SaveBestiary()
+    // called zero
+    private void Awake()
     {
-        SaveSystem.SaveUserData(this);
+        DontDestroyOnLoad(transform.root);
+        Debug.Log("Awake");
     }
 
-    public void LoadBestiary()
+    // called first
+    private void OnEnable()
     {
-        SaveSystem.LoadData();
+        Debug.Log("OnEnable called");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log("mode: " + mode);
+
+        if (scene.name == "HubWorldScene")
+        {
+            LoadBestiaryData();
+        }
+    }
+
+    // called third
+    private void Start()
+    {
+        Debug.Log("Start");
+    }
+
+    // called when game is terminated
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable");
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void LoadBestiaryData()
+    {
+        // Find the game object with the BestiaryMenu.cs script
+        // Load data from the bestiary.cs script to the BestiaryMenu.cs script
     }
 }

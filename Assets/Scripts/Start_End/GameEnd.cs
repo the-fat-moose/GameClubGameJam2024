@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class GameEnd : MonoBehaviour
@@ -24,7 +23,7 @@ public class GameEnd : MonoBehaviour
 
     private void Start()
     {
-        bestiaryClass = GetComponent<Bestiary>();
+        bestiaryClass = FindFirstObjectByType<Bestiary>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -86,6 +85,43 @@ public class GameEnd : MonoBehaviour
             finalScore = timeScore + healthScore;
 
             finalScore = Mathf.Round(finalScore * 10.0f) * 0.1f;
+
+            if (bestiaryClass != null)
+            {
+                if (creatureCage.GetComponentInChildren<Creature>() != null) 
+                {
+                    bool creatureAlreadyAdded = false;
+                    int index = 0;
+
+                    GameObject creatureToAdd = creatureCage.GetComponentInChildren<Creature>().transform.gameObject;
+                    creatureToAdd.GetComponent<Creature>().grade = finalScore;
+                    creatureToAdd.GetComponent<Creature>().time = finalTime;
+
+                    for (int i = 0; i < bestiaryClass.creaturesCaught.Count; i++)
+                    {
+                        if (creatureToAdd == bestiaryClass.creaturesCaught[i])
+                        {
+                            creatureAlreadyAdded = true;
+                            index = i;
+                        }
+                    }
+                    if (!creatureAlreadyAdded) 
+                    {
+                        bestiaryClass.creaturesCaught.Add(creatureToAdd);
+                    }
+                    else
+                    {
+                        if (bestiaryClass.creaturesCaught[index].GetComponent<Creature>().grade < finalScore)
+                        {
+                            bestiaryClass.creaturesCaught[index].GetComponent<Creature>().grade = finalScore;
+                        }
+                        if (bestiaryClass.creaturesCaught[index].GetComponent<Creature>().time > finalTime)
+                        {
+                            bestiaryClass.creaturesCaught[index].GetComponent<Creature>().time = finalTime;
+                        }
+                    }
+                }
+            }
 
             Debug.Log("Time Score: " + timeScore);
             Debug.Log("Health Score: " + healthScore);

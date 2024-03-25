@@ -9,11 +9,19 @@ public class CageController : MonoBehaviour
     private float speedUpDist = 10f;
     private float speed = 3f;
 
+    [SerializeField] private GameObject[] creatures;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null) { gameObject.GetComponent<CageTarget>().SetPlayerObject(player); }        
+    }
+
+    private void Start()
+    {
+        // Spawn Creatures
+        SpawnCreature();
     }
 
     private void Update()
@@ -30,5 +38,14 @@ public class CageController : MonoBehaviour
         {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.transform.position, _speed * Time.deltaTime);
         }
+    }
+
+    private void SpawnCreature()
+    {
+        int randomInt = Random.Range(0, 5);
+
+        GameObject creature = Instantiate(creatures[randomInt]);
+        creature.transform.parent = gameObject.transform;
+        creature.transform.position = gameObject.transform.position;
     }
 }

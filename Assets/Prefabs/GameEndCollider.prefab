@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1896546991085091740}
   - component: {fileID: 2181025105479495251}
-  - component: {fileID: 4251189752105742486}
   - component: {fileID: 8001420372157178377}
   m_Layer: 0
   m_Name: GameEndCollider
@@ -55,19 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 2.5, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4251189752105742486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6133219756703249303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f234e7bcb8d4ab48816082a12f0e527, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creaturesCaught: []
 --- !u!114 &8001420372157178377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,3 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1834ad9fa19e5e246ac9f97496cbdbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aRankTime: 60
+  bRankTime: 90
+  cRankTime: 120
+  dRankTime: 150

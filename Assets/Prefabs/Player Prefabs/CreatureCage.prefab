@@ -69,7 +69,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de90f8718def5dc4281918dac369a2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  creatures:
+  - {fileID: 563326610277541243, guid: f9a730bd2814e68478eec4b24d5ca9a3, type: 3}
+  - {fileID: 8923856420162735978, guid: df6eb739ab0ebf4429b3e39ded772782, type: 3}
+  - {fileID: 1484971228470116438, guid: 16351b951d116ed45bd0ad4b715c6f92, type: 3}
+  - {fileID: 8698591198569338684, guid: af924f86802cd8b4d9d736f717e01307, type: 3}
+  - {fileID: 8508208566630365536, guid: 22c0d350fece0bd4a885e08ccf59714a, type: 3}
 --- !u!95 &4027186339632664222
 Animator:
   serializedVersion: 5

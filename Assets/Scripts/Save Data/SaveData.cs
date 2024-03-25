@@ -14,11 +14,11 @@ public class SaveData
     public SaveData (Bestiary bestiary)
     {
         // bestiary save data
-        for (int i = 0; i < bestiary.creaturesCaught.Length; i++)
+        for (int i = 0; i < bestiary.creaturesCaught.Count; i++)
         {
             if (bestiary.creaturesCaught[i].GetComponent<Creature>() != null)
             {
-                name[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().name;
+                name[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().creatureName;
                 time[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().time;
                 grade[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().grade;
                 description[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().description;

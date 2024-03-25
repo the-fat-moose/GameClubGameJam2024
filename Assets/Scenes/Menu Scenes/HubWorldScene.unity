@@ -453,7 +453,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 27504731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739146290}
+        m_TargetAssemblyTypeName: UITransitionManager, Assembly-CSharp
+        m_MethodName: LevelThreeStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &27504731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,7 +1872,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 216992726}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739146290}
+        m_TargetAssemblyTypeName: UITransitionManager, Assembly-CSharp
+        m_MethodName: LevelTwoStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &216992726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,7 +2185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 229739377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739146290}
+        m_TargetAssemblyTypeName: UITransitionManager, Assembly-CSharp
+        m_MethodName: LevelOneStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &229739377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14696,7 +14732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252891452}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0020777863, y: 0.81619614, z: -0.5777638, w: -0.0029352498}
+  m_LocalRotation: {x: -0.0020777667, y: 0.81619614, z: -0.5777638, w: -0.002935222}
   m_LocalPosition: {x: -2.7510512, y: -0.941, z: 4.425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

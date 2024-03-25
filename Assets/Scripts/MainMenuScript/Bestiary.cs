@@ -6,15 +6,13 @@ public class Bestiary : MonoBehaviour
 {
     public GameObject[] creaturesCaught;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SaveBestiary()
     {
-        
+        SaveSystem.SaveUserData(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadBestiary()
     {
-        
+        SaveSystem.LoadData();
     }
 }

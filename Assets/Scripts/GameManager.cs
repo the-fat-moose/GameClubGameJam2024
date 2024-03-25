@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float timeElapsed = 0;
+    public float timeElapsed { get; private set; } = 0f;
     private GameObject player;
     private GameObject creatureCage;
     public bool canTimerRun { get; set; } = false;

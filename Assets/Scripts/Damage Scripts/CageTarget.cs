@@ -19,6 +19,7 @@ public class CageTarget : MonoBehaviour
     {
         controller = GetComponent<CageController>();
         currentHealth = maxHealth;
+        SetHealthPercentage();
     }
 
     public void SetPlayerObject(GameObject _player)
@@ -28,7 +29,7 @@ public class CageTarget : MonoBehaviour
         if (player != null) 
         { 
             playerUIManager = player.GetComponentInChildren<PlayerUIManager>(); 
-            if (playerUIManager != null ) { SetHealthPercentage(); }
+            if (playerUIManager != null ) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
         }
     }
 
@@ -61,7 +62,5 @@ public class CageTarget : MonoBehaviour
     private void SetHealthPercentage()
     {
         healthPercentage = currentHealth / maxHealth;
-
-        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
     }
 }

@@ -73,4 +73,17 @@ public class UITransitionManager : MonoBehaviour
         controlsPanel.SetActive(false);
         BackButton.SetActive(true);
     }
+
+    public void LevelOneStart()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void LevelTwoStart()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void LevelThreeStart()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

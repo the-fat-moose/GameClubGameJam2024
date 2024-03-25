@@ -10,7 +10,7 @@ public class Bestiary : MonoBehaviour
     // called zero
     private void Awake()
     {
-        DontDestroyOnLoad(transform.root);
+        DontDestroyOnLoad(this.gameObject);
         Debug.Log("Awake");
     }
 

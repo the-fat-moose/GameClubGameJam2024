@@ -58,7 +58,6 @@ public class FirstPersonController : MonoBehaviour
     [Header("Shooting Parameters")]
     private bool canShoot = true;
 
-    [Header("Cage Parameters")]
     public GameObject creatureCage { get; private set; } = null;
     public int cageMaterialPickups { get; set; } = 0;
     private float healAmount = 10f;

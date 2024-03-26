@@ -83,7 +83,7 @@ public class PlayerUIManager : MonoBehaviour
         ammoText.text = "reloading";
     }
 
-    public void GetScrapCount(float _scrapCount)
+    public void GetScrapCount(int _scrapCount)
     {
         scrapText.text = _scrapCount.ToString() + " scrap";
     }

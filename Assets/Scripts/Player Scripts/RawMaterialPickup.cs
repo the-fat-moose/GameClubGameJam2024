@@ -8,7 +8,7 @@ public class RawMaterialPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<FirstPersonController>().cageMaterialPickups += 1;
+            other.gameObject.GetComponent<FirstPersonController>().HandleMaterialCollection(1);
             Destroy(gameObject);
         }
     }

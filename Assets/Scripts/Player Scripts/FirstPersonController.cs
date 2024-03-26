@@ -165,8 +165,14 @@ public class FirstPersonController : MonoBehaviour
         if (creatureCage.GetComponent<CageTarget>().currentHealth < creatureCage.GetComponent<CageTarget>().maxHealth) 
         {
             creatureCage.GetComponent<CageTarget>().IncreaseHealth(healAmount);
-            cageMaterialPickups--;
+            HandleMaterialCollection(-1);
         }
+    }
+
+    public void HandleMaterialCollection(int numToAdd)
+    {
+        cageMaterialPickups += numToAdd;
+        playerUIManager.GetScrapCount(cageMaterialPickups);
     }
 
     private void ApplyFinalMovements()

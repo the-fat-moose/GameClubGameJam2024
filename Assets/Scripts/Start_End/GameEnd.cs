@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
@@ -21,9 +23,16 @@ public class GameEnd : MonoBehaviour
     [SerializeField] private float cRankTime = 120.0f;
     [SerializeField] private float dRankTime = 150.0f;
 
+    [Header("UI Elements")]
+    [SerializeField] TMP_Text gradeText;
+    [SerializeField] TMP_Text timeText;
+    [SerializeField] TMP_Text healthText;
+    [SerializeField] GameObject gradingCanvas;
+
     private void Start()
     {
         bestiaryClass = FindFirstObjectByType<Bestiary>();
+        gradingCanvas.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -41,11 +50,14 @@ public class GameEnd : MonoBehaviour
 
     private void GradingSystem()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         GameManager gmScript = gameManager.GetComponent<GameManager>();
         CageTarget ctScript = creatureCage.GetComponent<CageTarget>();
 
         if (gmScript != null && ctScript != null) 
         {
+            gradingCanvas.SetActive(true);
             gmScript.canTimerRun = false;
 
             finalTime = gmScript.timeElapsed;
@@ -88,7 +100,7 @@ public class GameEnd : MonoBehaviour
 
             if (bestiaryClass != null)
             {
-                if (creatureCage.GetComponentInChildren<Creature>() != null) 
+                if (creatureCage.GetComponentInChildren<Creature>() != null)
                 {
                     bool creatureAlreadyAdded = false;
                     int index = 0;
@@ -105,7 +117,7 @@ public class GameEnd : MonoBehaviour
                             index = i;
                         }
                     }
-                    if (!creatureAlreadyAdded) 
+                    if (!creatureAlreadyAdded)
                     {
                         bestiaryClass.creaturesCaught.Add(creatureToAdd);
                     }
@@ -120,13 +132,21 @@ public class GameEnd : MonoBehaviour
                             bestiaryClass.creaturesCaught[index].GetComponent<Creature>().time = finalTime;
                         }
                     }
+                   
                 }
             }
 
-            Debug.Log("Time Score: " + timeScore);
-            Debug.Log("Health Score: " + healthScore);
-            Debug.Log("Final Score: " + finalScore);
+            timeText.text = string.Format("Time: {00}:{1:00}", Mathf.FloorToInt(finalTime / 60), Mathf.FloorToInt(finalTime % 60));
+            healthText.text = "Health Remaining: " + creatureCage.GetComponent<CageTarget>().currentHealth + "/" + creatureCage.GetComponent<CageTarget>().maxHealth;
+            gradeText.text = "Grade: " + finalScore + "/100";
+
+            Invoke("OnMainMenuButtonClick", 5.0f);
         }
+    }
+
+    public void OnMainMenuButtonClick()
+    {
+        SceneManager.LoadScene("HubWorldScene");
     }
 }
 

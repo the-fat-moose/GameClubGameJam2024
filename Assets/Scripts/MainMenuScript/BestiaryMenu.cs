@@ -27,7 +27,7 @@ public class BestiaryMenu : MonoBehaviour
                 creaturePanel.SetActive(true);
 
                 nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", (creature.GetComponent<Creature>().time / 60), (creature.GetComponent<Creature>().time % 60));
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
                 scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
                 infoText.text = creature.GetComponent<Creature>().description;
             }
@@ -43,7 +43,7 @@ public class BestiaryMenu : MonoBehaviour
                 creaturePanel.SetActive(true);
 
                 nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", (creature.GetComponent<Creature>().time / 60), (creature.GetComponent<Creature>().time % 60));
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
                 scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
                 infoText.text = creature.GetComponent<Creature>().description;
             }
@@ -59,7 +59,7 @@ public class BestiaryMenu : MonoBehaviour
                 creaturePanel.SetActive(true);
 
                 nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", (creature.GetComponent<Creature>().time / 60), (creature.GetComponent<Creature>().time % 60));
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
                 scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
                 infoText.text = creature.GetComponent<Creature>().description;
             }
@@ -75,7 +75,7 @@ public class BestiaryMenu : MonoBehaviour
                 creaturePanel.SetActive(true);
 
                 nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", (creature.GetComponent<Creature>().time / 60), (creature.GetComponent<Creature>().time % 60));
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
                 scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
                 infoText.text = creature.GetComponent<Creature>().description;
             }
@@ -91,7 +91,7 @@ public class BestiaryMenu : MonoBehaviour
                 creaturePanel.SetActive(true);
 
                 nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", (creature.GetComponent<Creature>().time / 60), (creature.GetComponent<Creature>().time % 60));
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
                 scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
                 infoText.text = creature.GetComponent<Creature>().description;
             }

@@ -53,11 +53,17 @@ public class EnemyAi : MonoBehaviour
             }
             if (playerInSightRange && !playerInAttackRange)
             {
-                ChasePlayer();
+                if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead) 
+                {
+                    ChasePlayer();
+                }
             }
             if (playerInSightRange && playerInAttackRange)
             {
-                AttackPlayer();
+                if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead)
+                {
+                    AttackPlayer();
+                }
             }
         }
     }

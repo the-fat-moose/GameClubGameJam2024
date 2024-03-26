@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CageTarget : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CageTarget : MonoBehaviour
     private float damageReductionPercentage = 0.75f;
     public bool hasDamageReduction { get; set; } = false;
     public bool canHeal { get; private set; } = false;
+    public bool isDead { get; private set; } = false;
 
     CageController controller;
     PlayerUIManager playerUIManager;
@@ -44,7 +46,7 @@ public class CageTarget : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            GameOver();
         }
     }
 
@@ -64,5 +66,17 @@ public class CageTarget : MonoBehaviour
     private void SetHealthPercentage()
     {
         healthPercentage = currentHealth / maxHealth;
+    }
+
+    private void GameOver()
+    {
+        isDead = true;
+        Time.timeScale = 0;
+        LoadMainMenu();
+    }
+
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene("HubWorldScene");
     }
 }

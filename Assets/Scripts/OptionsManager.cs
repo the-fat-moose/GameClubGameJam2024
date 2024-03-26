@@ -24,6 +24,13 @@ public class OptionsManager : MonoBehaviour
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log("mode: " + mode);
+
+        if (scene.name == "HubWorldScene")
+        {
+            Time.timeScale = 1.0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     // called third

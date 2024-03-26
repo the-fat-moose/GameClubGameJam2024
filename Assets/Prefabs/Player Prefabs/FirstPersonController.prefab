@@ -240,7 +240,6 @@ MonoBehaviour:
   timeToCrouch: 0.25
   crouchingCenterPoint: {x: 0, y: 0.5, z: 0}
   standingCenterPoint: {x: 0, y: 0, z: 0}
-  creatureCage: {fileID: 0}
 --- !u!1 &8741076792453905813
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 226501017008422575, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798990703993441855, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_Pivot.x
@@ -458,11 +457,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073962508578331384, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4074167450918025631, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4748454410644376549, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_text
@@ -530,7 +529,7 @@ PrefabInstance:
       objectReference: {fileID: 5709664832825309609}
     - target: {fileID: 6400352545592620504, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7087477087829825954, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_IsActive

@@ -50,5 +50,14 @@ public class Bestiary : MonoBehaviour
     {
         // Find the game object with the BestiaryMenu.cs script
         // Load data from the bestiary.cs script to the BestiaryMenu.cs script
+
+        BestiaryMenu BMenu = GameObject.FindFirstObjectByType<BestiaryMenu>().GetComponent<BestiaryMenu>();
+
+        BMenu.creaturesCaughtInfo.Clear();
+
+        foreach(GameObject creature in creaturesCaught)
+        {
+            BMenu.creaturesCaughtInfo.Add(creature);
+        }
     }
 }

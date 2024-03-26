@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736757c8c579a844fade49a7c4ee59d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureDescription: 
+  creatureDescription: Example Example Example Example
   creatureNameText: Caterpillar
 --- !u!1001 &7260311418160586206
 PrefabInstance:

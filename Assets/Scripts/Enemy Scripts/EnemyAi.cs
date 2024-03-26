@@ -27,10 +27,13 @@ public class EnemyAi : MonoBehaviour
 
     public float health;
 
+    private Animator enemyAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        enemyAnimator = GetComponentInChildren<Animator>();
     }
 
     public void SetCreatureCage(GameObject _player)
@@ -70,6 +73,10 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
+        enemyAnimator.SetBool("IsAttackingCage", false);
+        enemyAnimator.SetBool("IsChasingCage", false);
+        enemyAnimator.SetBool("IsPatrolling", true);
+
         if (!walkPointSet) SearchWalkPoint();
 
         if(walkPointSet)
@@ -102,11 +109,19 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
+        enemyAnimator.SetBool("IsAttackingCage", false);
+        enemyAnimator.SetBool("IsChasingCage", true);
+        enemyAnimator.SetBool("IsPatrolling", false);
+
         agent.SetDestination(player.position);
     }
 
     private void AttackPlayer() 
     {
+        enemyAnimator.SetBool("IsAttackingCage", true);
+        enemyAnimator.SetBool("IsChasingCage", false);
+        enemyAnimator.SetBool("IsPatrolling", true);
+
         //Make Sure enemy doesn't move
         agent.SetDestination(transform.position);
 

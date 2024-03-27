@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UITransitionManager : MonoBehaviour
 {
@@ -13,7 +14,14 @@ public class UITransitionManager : MonoBehaviour
     public GameObject controlsPanel;
     public GameObject audioPanel;
     public GameObject BackButton;
+    public GameObject BackAcceptButton;
+    public Image fade;
 
+
+    private void Awake()
+    {
+        StartCoroutine(FadeIn(0.5f));
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +38,16 @@ public class UITransitionManager : MonoBehaviour
                 optionsPanel.SetActive(false);
                 audioPanel.SetActive(false);
                 controlsPanel.SetActive(false);
+                BackAcceptButton.SetActive(false);
+                BackButton.SetActive(false);
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && BackAcceptButton.activeInHierarchy)
+            {
+                audioPanel.SetActive(false);
+                optionsPanel.SetActive(true);
+                controlsPanel.SetActive(false);
+                BackButton.SetActive(true);
+                BackAcceptButton.SetActive(false);
             }
         }
     }
@@ -47,10 +65,13 @@ public class UITransitionManager : MonoBehaviour
         optionsPanel.SetActive(false);
         audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
+        BackAcceptButton.SetActive(false);
+        BackButton.SetActive(false);
     }
     public void Options()
     {
         optionsPanel.SetActive(true);
+        //BackAcceptButton.SetActive(true);
     }
     public void ControlsButton()
     {
@@ -58,6 +79,7 @@ public class UITransitionManager : MonoBehaviour
         optionsPanel.SetActive(false);
         audioPanel.SetActive(false);
         BackButton.SetActive(false);
+        BackAcceptButton.SetActive(true);
     }
     public void AudioButton()
     {
@@ -65,12 +87,18 @@ public class UITransitionManager : MonoBehaviour
         optionsPanel.SetActive(false);
         controlsPanel.SetActive(false);
         BackButton.SetActive(false);
+        BackAcceptButton.SetActive(true);
     }
     public void AcceptButton()
     {
         audioPanel.SetActive(false);
         optionsPanel.SetActive(true);
         controlsPanel.SetActive(false);
+        BackButton.SetActive(true);
+        BackAcceptButton.SetActive(false);
+    }
+    public void BackButtonActive()
+    {
         BackButton.SetActive(true);
     }
 
@@ -90,5 +118,23 @@ public class UITransitionManager : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public IEnumerator FadeIn(float duration)
+    {
+        fade.color = new Color(0, 0, 0, 1);
+        yield return new WaitForSeconds(1f);
+        float counter = 0;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            float alpha = Mathf.Lerp(1, 0, counter / duration);
+
+            fade.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        fade.enabled = false;
     }
 }

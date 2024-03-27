@@ -31,7 +31,7 @@ public class CageTarget : MonoBehaviour
         if (player != null) 
         { 
             playerUIManager = player.GetComponentInChildren<PlayerUIManager>();
-            if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
+            if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
         }
     }
 
@@ -41,7 +41,7 @@ public class CageTarget : MonoBehaviour
         else { currentHealth -= amount; }
 
         SetHealthPercentage();
-        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
+        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
         canHeal = true;
 
         if (currentHealth <= 0)
@@ -53,7 +53,7 @@ public class CageTarget : MonoBehaviour
     public void IncreaseHealth(float amount)
     {
         currentHealth += amount;
-        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage); }
+        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
 
         SetHealthPercentage();
         if (currentHealth >= maxHealth) 

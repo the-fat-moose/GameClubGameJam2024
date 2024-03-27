@@ -12,6 +12,7 @@ public class PlayerUIManager : MonoBehaviour
     // UI References
     [Header("Health Bar Assets")]
     [SerializeField] private GameObject[] healthBar = new GameObject[4];
+    [SerializeField] private TMP_Text healthText;
 
     [Header("Ammo Assets")]
     [SerializeField] private TMP_Text ammoText;
@@ -34,7 +35,7 @@ public class PlayerUIManager : MonoBehaviour
         GetAmmoCount(shooting.currentBulletCount, shooting.maxBulletCount);
     }
 
-    public void GetCageHealthPercentage(float percentage)
+    public void GetCageHealthPercentage(float percentage, float _currentHealth, float _maxHealth)
     {
         if (percentage >= 0.76f)
         {
@@ -71,6 +72,8 @@ public class PlayerUIManager : MonoBehaviour
             healthBar[2].SetActive(true);
             healthBar[3].SetActive(true);
         }
+
+        healthText.text = _currentHealth + " / " + _maxHealth;
     }
 
     public void GetAmmoCount(float _currentAmmoCount, float _maxAmmoCount)

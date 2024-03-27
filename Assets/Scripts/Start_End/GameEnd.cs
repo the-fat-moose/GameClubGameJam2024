@@ -17,6 +17,8 @@ public class GameEnd : MonoBehaviour
 
     private Bestiary bestiaryClass;
 
+    public bool gameIsPaused { get; private set; } = false;
+
     [Header("Score Ranges")]
     [SerializeField] private float aRankTime = 60.0f;
     [SerializeField] private float bRankTime = 90.0f;
@@ -50,6 +52,8 @@ public class GameEnd : MonoBehaviour
 
     private void GradingSystem()
     {
+        gameIsPaused = true;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameManager gmScript = gameManager.GetComponent<GameManager>();

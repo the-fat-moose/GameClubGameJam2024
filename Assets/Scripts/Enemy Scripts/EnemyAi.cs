@@ -29,11 +29,14 @@ public class EnemyAi : MonoBehaviour
 
     private Animator enemyAnimator;
 
+    private GameObject gameEndCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponentInChildren<Animator>();
+        gameEndCollider = GameObject.Find("GameEndCollider");
     }
 
     public void SetCreatureCage(GameObject _player)
@@ -44,28 +47,31 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (gameEndCollider != null && gameEndCollider.GetComponent<GameEnd>().gameIsPaused == false)
         {
-            //check for sight and attack range
-            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            if (player != null)
+            {
+                //check for sight and attack range
+                playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+                playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            if (!playerInSightRange && !playerInAttackRange)
-            {
-                Patroling();
-            }
-            if (playerInSightRange && !playerInAttackRange)
-            {
-                if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead) 
+                if (!playerInSightRange && !playerInAttackRange)
                 {
-                    ChasePlayer();
+                    Patroling();
                 }
-            }
-            if (playerInSightRange && playerInAttackRange)
-            {
-                if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead)
+                if (playerInSightRange && !playerInAttackRange)
                 {
-                    AttackPlayer();
+                    if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead)
+                    {
+                        ChasePlayer();
+                    }
+                }
+                if (playerInSightRange && playerInAttackRange)
+                {
+                    if (player.GetComponent<CageTarget>() != null && !player.GetComponent<CageTarget>().isDead)
+                    {
+                        AttackPlayer();
+                    }
                 }
             }
         }

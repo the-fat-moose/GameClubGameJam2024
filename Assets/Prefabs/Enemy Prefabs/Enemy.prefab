@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1995948973770130538}
   - component: {fileID: 6619767439605879914}
   - component: {fileID: 5665281952368750278}
+  - component: {fileID: 8013948545178042228}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -109,6 +110,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialPickupPrefab: {fileID: 2431757711044768557, guid: 70d99a4936bc6634c8d1c5c6719086d7, type: 3}
   healthBar: {fileID: 0}
+--- !u!136 &8013948545178042228
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842356361374471313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!1001 &6987319957834552707
 PrefabInstance:
   m_ObjectHideFlags: 0

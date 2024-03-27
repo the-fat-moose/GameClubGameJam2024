@@ -86,4 +86,9 @@ public class UITransitionManager : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
 }

@@ -10,7 +10,7 @@ public class FirstPersonController : MonoBehaviour
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) && characterController.isGrounded) || (Input.GetKeyDown(jumpKey) && canDoubleJump && remainingJumps > 0); // replace isGrounded with a different check for double jumping if double jumping is enabled
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
     private bool ShouldShoot => canShoot && Input.GetKeyDown(shootKey);
-    private bool ShouldDash => Input.GetKeyDown(dashKey) && canDash;
+    private bool ShouldDash => Input.GetKeyDown(dashKey) && canDash && isDashAbility;
 
     [Header("Functional Options")]
     [SerializeField] private bool canSprint = true;
@@ -31,8 +31,10 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchSpeed = 3.0f;
     [SerializeField] private float dashSpeed = 2000.0f;
     public bool canDash { get; set; } = false;
-    private float dashCooldown = 12.5f;
-    
+    public bool isDashAbility { get; set; } = false;
+    public float maxDashCooldown { get; private set; } = 12.5f;
+    public float dashCooldown { get; private set; } = 12.5f;
+
 
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f;
@@ -44,7 +46,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float jumpForce = 8.0f;
     [SerializeField] private float gravity = 20.0f;
     public bool canDoubleJump { get; set; } = false;
-    private int remainingJumps = 1;
+    public int remainingJumps { get; private set; } = 1;
 
     [Header("Crouch Parameters")]
     [SerializeField] private float crouchHeight = 0.5f;
@@ -223,12 +225,16 @@ public class FirstPersonController : MonoBehaviour
     // time between the player being able to dash -- Dash Cooldown
     private IEnumerator DashCooldown()
     {
-        Debug.Log("Start Dash cooldown");
+        dashCooldown = maxDashCooldown;
+
         canDash = false;
 
-        yield return new WaitForSeconds(dashCooldown);
+        while(dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
+            yield return null;
+        }
 
-        Debug.Log("End Dash cooldown");
         canDash = true;
     }
 }

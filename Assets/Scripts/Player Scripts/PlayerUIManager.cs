@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class PlayerUIManager : MonoBehaviour
 
     [Header("Ability Cooldown Assets")]
     [SerializeField] private GameObject[] cooldownMeter = new GameObject[3];
+
+    public void Update()
+    {
+        if (fpc != null && shooting != null) { DisplayAbilityCooldown(); }
+    }
 
     public void InitializeUI()
     {
@@ -94,5 +100,89 @@ public class PlayerUIManager : MonoBehaviour
     public void GetTimer(string _timerText)
     {
         timerText.text = _timerText;
+    }
+
+    private void DisplayAbilityCooldown()
+    {
+        if (fpc.isDashAbility)
+        {
+            float dashCooldownPercentage = fpc.dashCooldown / fpc.maxDashCooldown;
+
+            if (dashCooldownPercentage <= 1f && dashCooldownPercentage > 0.5f) 
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(true);
+                
+            }
+            else if (dashCooldownPercentage <= 0.5f)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(true);
+                cooldownMeter[2].SetActive(false);
+            }
+            else if (dashCooldownPercentage <= 0.0f)
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+            }
+            else
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+            }
+        }
+        if (fpc.canDoubleJump)
+        {
+            if (fpc.remainingJumps <= 0)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(true);
+            }
+            else
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+            }
+        }
+        if (shooting.canDamageBoost)
+        {
+            float damageBoostCooldownPercentage = shooting.damageBoostCooldown / shooting.damageBoostMaxCooldown;
+
+            if (damageBoostCooldownPercentage >= 1f)
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+            }
+            else if (damageBoostCooldownPercentage < 1f && damageBoostCooldownPercentage >= 0.5f)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(true);
+                cooldownMeter[2].SetActive(false);
+            }
+            else
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(true);
+            }
+        }
+        if (!shooting.canDamageBoost && !fpc.isDashAbility && !fpc.canDoubleJump)
+        {
+            cooldownMeter[0].SetActive(true);
+            if (cooldownMeter[0].GetComponent<Image>() != null)
+            {
+                cooldownMeter[0].GetComponent<Image>().color = Color.red;
+            }
+            if (cooldownMeter[1].GetComponent<Image>() != null)
+            {
+                cooldownMeter[1].GetComponent<Image>().color = Color.red;
+            }
+        }
     }
 }

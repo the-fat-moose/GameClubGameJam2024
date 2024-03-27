@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 1: // Dash
                 player.GetComponent<FirstPersonController>().canDash = true;
+                player.GetComponent<FirstPersonController>().isDashAbility = true;
                 break;
             case 2: // Bullet Damage Increase
                 player.GetComponent<Shooting>().canDamageBoost = true;

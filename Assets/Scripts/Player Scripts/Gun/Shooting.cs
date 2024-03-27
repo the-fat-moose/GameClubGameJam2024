@@ -15,6 +15,8 @@ public class Shooting : MonoBehaviour
     private bool damageMultiplierEnabled = false;
     public bool canActivateDamageBoost { get; set; } = false;
     public bool canDamageBoost { get; set; } = false;
+    public float damageBoostMaxCooldown { get; private set; } = 10f;
+    public float damageBoostCooldown { get; private set; } = 10f;
 
     [Header("Gunshot Drawing")]
     [SerializeField] Transform gunTip;
@@ -125,11 +127,15 @@ public class Shooting : MonoBehaviour
 
     public IEnumerator DamageMultiplierCooldown()
     {
-        Debug.Log("Damage boost NOT READY");
+        damageBoostCooldown = damageBoostMaxCooldown;
 
-        yield return new WaitForSeconds(10f);
+        while(damageBoostCooldown > 0) 
+        {
+            damageBoostCooldown -= Time.deltaTime;
+
+            yield return null;
+        }
 
         canActivateDamageBoost = true;
-        Debug.Log("Damage boost READY");
     }
 }

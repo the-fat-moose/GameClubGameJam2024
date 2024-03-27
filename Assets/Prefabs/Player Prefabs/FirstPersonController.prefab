@@ -451,6 +451,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6389814159225195597, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389814159225195597, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389814159225195597, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087477087829825954, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7997925269829571946, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8457813320716397619, guid: 5e3675f187676d941847ab2ab9ed0c2d, type: 3}
       propertyPath: m_Name
       value: PlayerUICanvas

@@ -12,7 +12,7 @@ public class Shooting : MonoBehaviour
     private float reloadTime = 2f;
     private bool canShoot = true; // used to not allow spam of reload
     private float damageMultiplier = 5f;
-    private bool damageMultiplierEnabled = false;
+    public bool damageMultiplierEnabled { get; private set; } = false;
     public bool canActivateDamageBoost { get; set; } = false;
     public bool canDamageBoost { get; set; } = false;
     public float damageBoostMaxCooldown { get; private set; } = 10f;

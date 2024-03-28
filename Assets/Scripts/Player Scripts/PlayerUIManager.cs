@@ -108,7 +108,13 @@ public class PlayerUIManager : MonoBehaviour
         {
             float dashCooldownPercentage = fpc.dashCooldown / fpc.maxDashCooldown;
 
-            if (dashCooldownPercentage <= 1f && dashCooldownPercentage > 0.5f) 
+            if (fpc.canDash)
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+            }
+            else if (dashCooldownPercentage <= 1f && dashCooldownPercentage > 0.5f) 
             {
                 cooldownMeter[0].SetActive(false);
                 cooldownMeter[1].SetActive(false);
@@ -127,12 +133,7 @@ public class PlayerUIManager : MonoBehaviour
                 cooldownMeter[1].SetActive(false);
                 cooldownMeter[2].SetActive(false);
             }
-            else
-            {
-                cooldownMeter[0].SetActive(true);
-                cooldownMeter[1].SetActive(false);
-                cooldownMeter[2].SetActive(false);
-            }
+            
         }
         if (fpc.canDoubleJump)
         {
@@ -153,24 +154,107 @@ public class PlayerUIManager : MonoBehaviour
         {
             float damageBoostCooldownPercentage = shooting.damageBoostCooldown / shooting.damageBoostMaxCooldown;
 
-            if (damageBoostCooldownPercentage >= 1f)
+            if (shooting.canActivateDamageBoost)
             {
                 cooldownMeter[0].SetActive(true);
                 cooldownMeter[1].SetActive(false);
                 cooldownMeter[2].SetActive(false);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.white;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.white;
+                }
             }
-            else if (damageBoostCooldownPercentage < 1f && damageBoostCooldownPercentage >= 0.5f)
-            {
-                cooldownMeter[0].SetActive(false);
-                cooldownMeter[1].SetActive(true);
-                cooldownMeter[2].SetActive(false);
-            }
-            else
+            else if (damageBoostCooldownPercentage <= 1f && damageBoostCooldownPercentage > 0.5f && shooting.damageMultiplierEnabled)
             {
                 cooldownMeter[0].SetActive(false);
                 cooldownMeter[1].SetActive(false);
                 cooldownMeter[2].SetActive(true);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.green;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.green;
+                }
+
             }
+            else if (damageBoostCooldownPercentage <= 0.5f && shooting.damageMultiplierEnabled)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(true);
+                cooldownMeter[2].SetActive(false);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.green;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.green;
+                }
+            }
+            else if (damageBoostCooldownPercentage <= 0.0f && shooting.damageMultiplierEnabled)
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.green;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.green;
+                }
+            }
+            else if (damageBoostCooldownPercentage <= 1f && damageBoostCooldownPercentage > 0.5f)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(true);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.white;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.white;
+                }
+            }
+            else if (damageBoostCooldownPercentage <= 0.5f)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(true);
+                cooldownMeter[2].SetActive(false);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.white;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.white;
+                }
+            }
+            else if (damageBoostCooldownPercentage <= 0.0f)
+            {
+                cooldownMeter[0].SetActive(true);
+                cooldownMeter[1].SetActive(false);
+                cooldownMeter[2].SetActive(false);
+                if (cooldownMeter[0].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[0].GetComponent<Image>().color = Color.white;
+                }
+                if (cooldownMeter[1].GetComponent<Image>() != null)
+                {
+                    cooldownMeter[1].GetComponent<Image>().color = Color.white;
+                }
+            }
+
+
         }
         if (!shooting.canDamageBoost && !fpc.isDashAbility && !fpc.canDoubleJump)
         {

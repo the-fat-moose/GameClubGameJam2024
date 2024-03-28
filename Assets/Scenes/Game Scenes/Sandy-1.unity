@@ -2217,19 +2217,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1653178356}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -147.80603
+      value: -194.42603
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.16
+      value: 1.5005856
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.728332
+      value: -30.311668
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2237,7 +2237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2268,6 +2268,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
+--- !u!4 &246593462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3ffd5cd02bb2a345a712349b6925cc6, type: 3}
+  m_PrefabInstance: {fileID: 246593461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &257272979
 GameObject:
   m_ObjectHideFlags: 0
@@ -19505,6 +19510,7 @@ Transform:
   - {fileID: 912160626}
   - {fileID: 1106662121}
   - {fileID: 212632045}
+  - {fileID: 246593462}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657145104
@@ -25279,7 +25285,6 @@ SceneRoots:
   - {fileID: 1748945424}
   - {fileID: 874324789}
   - {fileID: 270370611}
-  - {fileID: 246593461}
   - {fileID: 107889454}
   - {fileID: 699299068}
   - {fileID: 1068001101}

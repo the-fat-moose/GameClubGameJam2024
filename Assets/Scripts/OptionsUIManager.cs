@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsUIManager : MonoBehaviour
@@ -26,39 +27,67 @@ public class OptionsUIManager : MonoBehaviour
 
     public bool fullscreen { get; private set; } = false;
 
+    OptionsManager optionsManager;
+
     private void Start()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
+
         masterVolume = masterVolumeSlider.value;
         sfxVolume = sfxVolumeSlider.value;
         musicVolume = musicVolumeSlider.value;
         mouseSensitivityX = mouseSensitivityXSlider.value;
         mouseSensitivityY = mouseSensitivityYSlider.value;
         OnFullScreenCheckBoxUpdate(fullscreenCheckbox.isOn);
+
+        if (optionsManager != null && currentScene.name == "HubWorldScene") 
+        {
+            optionsManager.masterVolume = masterVolume;
+            optionsManager.sfxVolume = sfxVolume;
+            optionsManager.musicVolume = musicVolume;
+            optionsManager.mouseSensX = mouseSensitivityX;
+            optionsManager.mouseSensY = mouseSensitivityY;
+        }
+        else if (optionsManager != null && currentScene.name != "HubWorldScene")
+        {
+            masterVolumeSlider.value = optionsManager.masterVolume;
+            sfxVolumeSlider.value = optionsManager.sfxVolume;
+            musicVolumeSlider.value = optionsManager.musicVolume;
+            mouseSensitivityXSlider.value = optionsManager.mouseSensX;
+            mouseSensitivityYSlider.value = optionsManager.mouseSensY;
+        }
     }
 
     public void OnMasterVolumeSliderUpdate()
     {
         masterVolume = masterVolumeSlider.value;
+        if (optionsManager != null) { optionsManager.masterVolume = masterVolume; }
     }
 
     public void OnSFXVolumeSliderUpdate()
     {
         sfxVolume = sfxVolumeSlider.value;
+        if (optionsManager != null) { optionsManager.sfxVolume = sfxVolume; }
     }
 
     public void OnMusicVolumeSliderUpdate()
     {
         musicVolume = musicVolumeSlider.value;
+        if (optionsManager != null) { optionsManager.musicVolume = musicVolume; }
     }
 
     public void OnMouseSensitivityXSliderUpdate() 
     { 
         mouseSensitivityX = mouseSensitivityXSlider.value;
+        if (optionsManager != null) { optionsManager.mouseSensX = mouseSensitivityX; }
     }
 
     public void OnMouseSensitivityYSliderUpdate()
     {
         mouseSensitivityY = mouseSensitivityYSlider.value;
+        if (optionsManager != null) { optionsManager.mouseSensY = mouseSensitivityY; }
     }
 
     public void OnFullScreenCheckBoxUpdate(bool toggle)

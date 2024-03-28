@@ -7,12 +7,14 @@ public class OptionsManager : MonoBehaviour
 {
     private static OptionsManager instance;
 
+    Scene currentScene;
+
     private GameObject optionsUIManager;
-    public float masterVolume { get; private set; }
-    public float sfxVolume { get; private set; }
-    public float musicVolume { get; private set; }
-    public float mouseSensX { get; private set; }
-    public float mouseSensY { get; private set; }
+    public float masterVolume { get; set; }
+    public float sfxVolume { get; set; }
+    public float musicVolume { get; set; }
+    public float mouseSensX { get; set; }
+    public float mouseSensY { get; set; }
 
     // called zero
     private void Awake()
@@ -41,6 +43,8 @@ public class OptionsManager : MonoBehaviour
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene != null) { currentScene = scene; }
+
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log("mode: " + mode);
 
@@ -58,19 +62,6 @@ public class OptionsManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("Start");
-    }
-
-    // called fourth
-    private void Update()
-    {
-        if (optionsUIManager != null)
-        {
-            masterVolume = optionsUIManager.GetComponent<OptionsUIManager>().masterVolume;
-            sfxVolume = optionsUIManager.GetComponent<OptionsUIManager>().sfxVolume;
-            musicVolume = optionsUIManager.GetComponent<OptionsUIManager>().musicVolume;
-            mouseSensX = optionsUIManager.GetComponent<OptionsUIManager>().mouseSensitivityX;
-            mouseSensY = optionsUIManager.GetComponent<OptionsUIManager>().mouseSensitivityY;
-        }
     }
 
     // called when game is terminated

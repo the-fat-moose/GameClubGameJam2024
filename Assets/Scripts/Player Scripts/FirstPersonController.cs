@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
-    public bool CanMove { get; private set; } = true;
+    public bool CanMove { get; set; } = true;
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     private bool ShouldJump => (Input.GetKeyDown(jumpKey) && characterController.isGrounded) || (Input.GetKeyDown(jumpKey) && canDoubleJump && remainingJumps > 0); // replace isGrounded with a different check for double jumping if double jumping is enabled
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
@@ -68,6 +68,7 @@ public class FirstPersonController : MonoBehaviour
     public CharacterController characterController { get; private set; }
     private Shooting shootScript;
     private PlayerUIManager playerUIManager;
+    private OptionsManager optionsManager;
 
     private Vector3 moveDirection;
     private Vector2 currentInput;
@@ -82,6 +83,11 @@ public class FirstPersonController : MonoBehaviour
         playerUIManager = GetComponentInChildren<PlayerUIManager>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void Start()
+    {
+        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
     }
 
     public void SetCreatureCage(GameObject _creatureCage)
@@ -119,10 +125,19 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        float sensX = 1f;
+        float sensY = 1f;
+
+        if (optionsManager != null)
+        {
+            sensX = optionsManager.mouseSensX;
+            sensY = optionsManager.mouseSensY;
+        }
+
+        rotationX -= Input.GetAxis("Mouse Y") * (lookSpeedY * sensY);
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * (lookSpeedX * sensX), 0);
     }
 
     private void HandleJump()

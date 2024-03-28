@@ -104,15 +104,15 @@ public class UITransitionManager : MonoBehaviour
 
     public void LevelOneStart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void LevelTwoStart()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     public void LevelThreeStart()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     public void QuitButton()

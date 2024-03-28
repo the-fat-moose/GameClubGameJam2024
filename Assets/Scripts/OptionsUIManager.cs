@@ -21,6 +21,15 @@ public class OptionsUIManager : MonoBehaviour
     public float mouseSensitivityX { get; private set; }
     public float mouseSensitivityY { get; private set; }
 
+    private void Start()
+    {
+        masterVolume = masterVolumeSlider.value;
+        sfxVolume = sfxVolumeSlider.value;
+        musicVolume = musicVolumeSlider.value;
+        mouseSensitivityX = mouseSensitivityXSlider.value;
+        mouseSensitivityY = mouseSensitivityYSlider.value;
+    }
+
     public void OnMasterVolumeSliderUpdate()
     {
         masterVolume = masterVolumeSlider.value;

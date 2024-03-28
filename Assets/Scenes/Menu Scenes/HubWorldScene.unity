@@ -4203,7 +4203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393391253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011897365, y: -0.7713753, z: 0.0144273685, w: 0.6361057}
+  m_LocalRotation: {x: 0.011897365, y: -0.77137536, z: 0.014427372, w: 0.6361057}
   m_LocalPosition: {x: -5.161, y: -0.305, z: 4.644148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4333,13 +4333,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2006135223}
   m_HandleRect: {fileID: 1202771351}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.01
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233570881}
+        m_TargetAssemblyTypeName: OptionsUIManager, Assembly-CSharp
+        m_MethodName: OnMouseSensitivityXSliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &401426678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5923,7 +5935,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473691020}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045776676, y: 0.79572093, z: -0.060620096, w: 0.6008809}
+  m_LocalRotation: {x: 0.045776676, y: 0.795721, z: -0.0606201, w: 0.6008809}
   m_LocalPosition: {x: -3.0620034, y: 2.2176583, z: 3.0568523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7039,13 +7051,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1361482379}
   m_HandleRect: {fileID: 1750532969}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.01
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233570881}
+        m_TargetAssemblyTypeName: OptionsUIManager, Assembly-CSharp
+        m_MethodName: OnMouseSensitivityYSliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &577498212
 GameObject:
   m_ObjectHideFlags: 0
@@ -7755,7 +7779,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233570881}
+        m_TargetAssemblyTypeName: OptionsUIManager, Assembly-CSharp
+        m_MethodName: OnMusicVolumeSliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &632394960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13581,7 +13617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009218329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00010923817, y: 0.99771243, z: 0.06758203, w: -0.0016126813}
+  m_LocalRotation: {x: 0.000109235785, y: 0.99771243, z: 0.06758201, w: -0.0016126464}
   m_LocalPosition: {x: -2.7559967, y: -0.9606583, z: 4.644148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16208,7 +16244,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233570881}
+        m_TargetAssemblyTypeName: OptionsUIManager, Assembly-CSharp
+        m_MethodName: OnMasterVolumeSliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1197159787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdfda576ae679a44ea3252ab96d45d58, type: 3}
@@ -16251,8 +16299,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1993937402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.0990991, y: 0}
+  m_AnchorMax: {x: 0.0990991, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18243,7 +18291,7 @@ RectTransform:
   m_Father: {fileID: 1991834638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.0990991, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20318,7 +20366,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233570881}
+        m_TargetAssemblyTypeName: OptionsUIManager, Assembly-CSharp
+        m_MethodName: OnSFXVolumeSliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1538704235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 136ec9f624a57624ba22cad6ec917289, type: 3}
@@ -21695,8 +21755,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1446662057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.0990991, y: 0}
+  m_AnchorMax: {x: 0.0990991, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22758,7 +22818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838840668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045776676, y: 0.79572093, z: -0.060620096, w: 0.6008809}
+  m_LocalRotation: {x: 0.045776676, y: 0.795721, z: -0.0606201, w: 0.6008809}
   m_LocalPosition: {x: 0.162, y: -0.193, z: 2.821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24346,7 +24406,7 @@ RectTransform:
   m_Father: {fileID: 1759995368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.0990991, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -27092,23 +27152,23 @@ PrefabInstance:
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: sfxVolumeSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1524303652}
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: musicVolumeSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 623140732}
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: masterVolumeSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1192216721}
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: mouseSensitivityXSlider
       value: 
-      objectReference: {fileID: 468812593}
+      objectReference: {fileID: 399674129}
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: mouseSensitivityYSlider
       value: 
-      objectReference: {fileID: 436462981}
+      objectReference: {fileID: 577216916}
     - target: {fileID: 7456006091986491025, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -159,6 +159,34 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSFXVolumeSliderUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617715851723052807, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2627603609840249364, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -251,6 +279,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnFullScreenCheckBoxUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3204694590332113640, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -258,15 +314,39 @@ PrefabInstance:
     - target: {fileID: 3204694590332113640, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMouseSensitivityYSliderUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3326290606125266655, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4120282863851609491, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4120282863851609491, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4694591950485273916, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -274,6 +354,34 @@ PrefabInstance:
     - target: {fileID: 4694591950485273916, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMouseSensitivityXSliderUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715148376738027549, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5729683706833282965, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.x
@@ -294,6 +402,62 @@ PrefabInstance:
     - target: {fileID: 6342013197294195435, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMusicVolumeSliderUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389622760761539228, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 897250169}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMasterVolumeSliderUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593523074304190027, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8199300406577230926, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
       propertyPath: m_AnchorMax.x
@@ -324,6 +488,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+--- !u!114 &2283498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3007222982592706386, guid: a5958934a18bb4b44a2b1979e21b31ac, type: 3}
+  m_PrefabInstance: {fileID: 2283497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &49447823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4578,6 +4753,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 58225647}
     - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
+      propertyPath: fullscreenCheckbox
+      value: 
+      objectReference: {fileID: 2283498}
+    - target: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
       propertyPath: masterVolumeSlider
       value: 
       objectReference: {fileID: 91176513}
@@ -4634,6 +4813,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
+--- !u!114 &897250169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5959878378984184256, guid: cf31bdf394fb98b45904d4ae754e0f4e, type: 3}
+  m_PrefabInstance: {fileID: 897250168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70de65d14730bfe459ac6d2cd7680a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &914423965 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3298bcd6379908443b40395b9182d979, type: 3}

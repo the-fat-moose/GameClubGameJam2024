@@ -27,6 +27,13 @@ public class PlayerUIManager : MonoBehaviour
     [Header("Ability Cooldown Assets")]
     [SerializeField] private GameObject[] cooldownMeter = new GameObject[3];
 
+    [Header("Ability Assets")]
+    public GameObject dashIcon;
+    public GameObject doubleJumpIcon;
+    public GameObject rageIcon;
+    public GameObject silentStepIcon;
+    public GameObject toughSkinIcon;
+
     public void Update()
     {
         if (fpc != null && shooting != null) { DisplayAbilityCooldown(); }

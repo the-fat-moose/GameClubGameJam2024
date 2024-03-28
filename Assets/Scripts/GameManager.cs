@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private GameObject creatureCage;
     public bool canTimerRun { get; set; } = false;
+    private GameObject enemySpawner;
 
     private void Update()
     {
@@ -26,6 +27,14 @@ public class GameManager : MonoBehaviour
         creatureCage = _creatureCage;
 
         if (player.GetComponent<FirstPersonController>() != null && creatureCage.GetComponent<CageTarget>() != null) { SelectAbility(); }
+    }
+
+    public void SetEnemySpawner(GameObject _spawner)
+    {
+        if (_spawner != null)
+        {
+            enemySpawner = _spawner;
+        }
     }
 
     private void SetTimerString(float timer)
@@ -49,22 +58,29 @@ public class GameManager : MonoBehaviour
         {
             case 0: // Double Jump
                 player.GetComponent<FirstPersonController>().canDoubleJump = true;
+                player.GetComponentInChildren<PlayerUIManager>().doubleJumpIcon.SetActive(true);
                 break;
             case 1: // Dash
                 player.GetComponent<FirstPersonController>().canDash = true;
                 player.GetComponent<FirstPersonController>().isDashAbility = true;
+                player.GetComponentInChildren<PlayerUIManager>().dashIcon.SetActive(true);
                 break;
             case 2: // Bullet Damage Increase
                 player.GetComponent<Shooting>().canDamageBoost = true;
                 StartCoroutine(player.GetComponent<Shooting>().DamageMultiplierCooldown());
+                player.GetComponentInChildren<PlayerUIManager>().rageIcon.SetActive(true);
                 break;
             case 3: // Cage Damage Reduction
                 creatureCage.GetComponent<CageTarget>().hasDamageReduction = true;
+                player.GetComponentInChildren<PlayerUIManager>().toughSkinIcon.SetActive(true);
                 break;
             case 4: // Decreased Enemy Spawnrate
+                enemySpawner.GetComponent<EnemySpawner>().sneakStep = true;
+                player.GetComponentInChildren<PlayerUIManager>().silentStepIcon.SetActive(true);
                 break;
             default: // Dash in event of coding no worky
                 player.GetComponent<FirstPersonController>().canDash = true;
+                player.GetComponentInChildren<PlayerUIManager>().dashIcon.SetActive(true);
                 break;
         }
     }

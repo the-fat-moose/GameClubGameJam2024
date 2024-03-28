@@ -42,7 +42,7 @@ public class OptionsUIManager : MonoBehaviour
         mouseSensitivityY = mouseSensitivityYSlider.value;
         OnFullScreenCheckBoxUpdate(fullscreenCheckbox.isOn);
 
-        if (optionsManager != null && currentScene.name == "HubWorldScene") 
+        if (optionsManager != null && currentScene.name == "HubWorldScene" && optionsManager.timesVisitedMainMenu <= 1) 
         {
             optionsManager.masterVolume = masterVolume;
             optionsManager.sfxVolume = sfxVolume;
@@ -50,7 +50,7 @@ public class OptionsUIManager : MonoBehaviour
             optionsManager.mouseSensX = mouseSensitivityX;
             optionsManager.mouseSensY = mouseSensitivityY;
         }
-        else if (optionsManager != null && currentScene.name != "HubWorldScene")
+        else if (optionsManager != null)
         {
             masterVolumeSlider.value = optionsManager.masterVolume;
             sfxVolumeSlider.value = optionsManager.sfxVolume;

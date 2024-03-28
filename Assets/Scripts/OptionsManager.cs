@@ -16,6 +16,8 @@ public class OptionsManager : MonoBehaviour
     public float mouseSensX { get; set; }
     public float mouseSensY { get; set; }
 
+    public int timesVisitedMainMenu { get; private set; } = 0;
+
     // called zero
     private void Awake()
     {
@@ -53,6 +55,7 @@ public class OptionsManager : MonoBehaviour
             Time.timeScale = 1.0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            timesVisitedMainMenu += 1;
         }
 
         optionsUIManager = GameObject.FindFirstObjectByType<OptionsUIManager>().transform.gameObject;

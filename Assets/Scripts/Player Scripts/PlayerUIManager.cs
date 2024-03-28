@@ -143,6 +143,12 @@ public class PlayerUIManager : MonoBehaviour
                 cooldownMeter[1].SetActive(false);
                 cooldownMeter[2].SetActive(true);
             }
+            else if (!fpc.characterController.isGrounded && fpc.remainingJumps >= 1)
+            {
+                cooldownMeter[0].SetActive(false);
+                cooldownMeter[1].SetActive(true);
+                cooldownMeter[2].SetActive(false);
+            }
             else
             {
                 cooldownMeter[0].SetActive(true);

@@ -65,7 +65,7 @@ public class FirstPersonController : MonoBehaviour
     private float healAmount = 10f;
 
     private Camera playerCamera;
-    private CharacterController characterController;
+    public CharacterController characterController { get; private set; }
     private Shooting shootScript;
     private PlayerUIManager playerUIManager;
 

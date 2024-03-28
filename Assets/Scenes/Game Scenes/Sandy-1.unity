@@ -20421,12 +20421,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 0b8eeff3fbdc621489c9a3a65db3d6f5, type: 2}
+    - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
+      propertyPath: m_LastPosition.x
+      value: 50.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
+      propertyPath: m_LastPosition.y
+      value: 4.9990788
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
+      propertyPath: m_LastPosition.z
+      value: 4.7970767
+      objectReference: {fileID: 0}
     - target: {fileID: 2604817412586889378, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
       propertyPath: m_Name
       value: NavMesh

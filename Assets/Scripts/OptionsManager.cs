@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class OptionsManager : MonoBehaviour
 {
+    private GameObject optionsUIManager;
+    public float masterVolume { get; private set; }
+    public float sfxVolume { get; private set; }
+    public float musicVolume { get; private set; }
+    public float mouseSensX { get; private set; }
+    public float mouseSensY { get; private set; }
+
     // called zero
     private void Awake()
     {
@@ -31,12 +38,27 @@ public class OptionsManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
+        optionsUIManager = GameObject.FindFirstObjectByType<OptionsUIManager>().transform.gameObject;
     }
 
     // called third
     private void Start()
     {
         Debug.Log("Start");
+    }
+
+    // called fourth
+    private void Update()
+    {
+        if (optionsUIManager != null)
+        {
+            masterVolume = optionsUIManager.GetComponent<OptionsUIManager>().masterVolume;
+            sfxVolume = optionsUIManager.GetComponent<OptionsUIManager>().sfxVolume;
+            musicVolume = optionsUIManager.GetComponent<OptionsUIManager>().musicVolume;
+            mouseSensX = optionsUIManager.GetComponent<OptionsUIManager>().mouseSensitivityX;
+            mouseSensY = optionsUIManager.GetComponent<OptionsUIManager>().mouseSensitivityY;
+        }
     }
 
     // called when game is terminated

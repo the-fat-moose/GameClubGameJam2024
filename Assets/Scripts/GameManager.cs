@@ -11,9 +11,42 @@ public class GameManager : MonoBehaviour
     private GameObject creatureCage;
     public bool canTimerRun { get; set; } = false;
     private GameObject enemySpawner;
+    private GameObject pauseMenu;
+    private bool isGamePaused;
+
+    private void Start()
+    {
+        pauseMenu = GameObject.Find("PauseCanvas");
+        if (pauseMenu != null ) { pauseMenu.SetActive(false); }
+    }
 
     private void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Escape) && !isGamePaused) 
+        {
+            pauseMenu.SetActive(true);
+            if (player != null) 
+            { 
+                player.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0f;
+            isGamePaused = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.Escape) && isGamePaused)
+        {
+            Time.timeScale = 1f;
+            if (player != null)
+            {
+                player.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            pauseMenu.SetActive(false);
+            isGamePaused = false;
+        }
+
         if (canTimerRun)
         {
             timeElapsed += Time.deltaTime;

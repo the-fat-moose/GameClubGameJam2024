@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 { 
+    /*
     // bestiary save data
     public string[] name;
     public float[] time;
@@ -24,5 +25,5 @@ public class SaveData
                 description[i] = bestiary.creaturesCaught[i].GetComponent<Creature>().description;
             }
         }
-    }
+    }*/
 }

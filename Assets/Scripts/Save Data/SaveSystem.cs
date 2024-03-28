@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+    /*
     public static void SaveUserData(Bestiary bestiary)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -35,5 +36,5 @@ public static class SaveSystem
             Debug.Log("Save file not found in " + path);
             return null;
         }
-    }
+    }*/
 }

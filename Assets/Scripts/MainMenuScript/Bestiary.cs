@@ -5,12 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class Bestiary : MonoBehaviour
 {
-    public List<GameObject> creaturesCaught = new List<GameObject>();
-
+    public List<CreatureData> creaturesCaught = new List<CreatureData>();
+    private static int index = 0;
+    private static Bestiary instance = null;
     // called zero
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else if(instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        
         Debug.Log("Awake");
     }
 
@@ -55,7 +66,7 @@ public class Bestiary : MonoBehaviour
 
         BMenu.creaturesCaughtInfo.Clear();
 
-        foreach(GameObject creature in creaturesCaught)
+        foreach(CreatureData creature in creaturesCaught)
         {
             BMenu.creaturesCaughtInfo.Add(creature);
         }

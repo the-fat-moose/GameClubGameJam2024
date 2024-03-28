@@ -11,7 +11,7 @@ public class BestiaryMenu : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text infoText;
 
-    public List<GameObject> creaturesCaughtInfo = new List<GameObject>();
+    public List<CreatureData> creaturesCaughtInfo = new List<CreatureData>();
 
     private void Start()
     {
@@ -20,80 +20,80 @@ public class BestiaryMenu : MonoBehaviour
 
     public void OnCaterpillarButtonClick()
     {
-        foreach(GameObject creature in creaturesCaughtInfo)
+        foreach(CreatureData creature in creaturesCaughtInfo)
         {
-            if (creature.CompareTag("Caterpillar"))
+            if (creature.creatureName == "Caterpillar")
             {
                 creaturePanel.SetActive(true);
 
-                nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
-                scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
-                infoText.text = creature.GetComponent<Creature>().description;
+                nameText.text = "Name: " + creature.creatureName;
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.time / 60), Mathf.FloorToInt(creature.time % 60));
+                scoreText.text = "Best Grade: " + creature.grade + "/100";
+                infoText.text = creature.description;
             }
         }
     }
 
     public void OnBatButtonClick()
     {
-        foreach (GameObject creature in creaturesCaughtInfo)
+        foreach (CreatureData creature in creaturesCaughtInfo)
         {
-            if (creature.CompareTag("Bat"))
+            if (creature.creatureName == "Bat")
             {
                 creaturePanel.SetActive(true);
 
-                nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
-                scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
-                infoText.text = creature.GetComponent<Creature>().description;
+                nameText.text = "Name: " + creature.creatureName;
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.time / 60), Mathf.FloorToInt(creature.time % 60));
+                scoreText.text = "Best Grade: " + creature.grade + "/100";
+                infoText.text = creature.description;
             }
         }
     }
 
     public void OnRockButtonClick()
     {
-        foreach (GameObject creature in creaturesCaughtInfo)
+        foreach (CreatureData creature in creaturesCaughtInfo)
         {
-            if (creature.CompareTag("Rock"))
+            if (creature.creatureName == "Rock")
             {
                 creaturePanel.SetActive(true);
 
-                nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
-                scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
-                infoText.text = creature.GetComponent<Creature>().description;
+                nameText.text = "Name: " + creature.creatureName;
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.time / 60), Mathf.FloorToInt(creature.time % 60));
+                scoreText.text = "Best Grade: " + creature.grade + "/100";
+                infoText.text = creature.description;
             }
         }
     }
 
     public void OnDinoButtonClick()
     {
-        foreach (GameObject creature in creaturesCaughtInfo)
+        foreach (CreatureData creature in creaturesCaughtInfo)
         {
-            if (creature.CompareTag("Dino"))
+            if (creature.creatureName == "Dino")
             {
                 creaturePanel.SetActive(true);
 
-                nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
-                scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
-                infoText.text = creature.GetComponent<Creature>().description;
+                nameText.text = "Name: " + creature.creatureName;
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature  .time / 60), Mathf.FloorToInt(creature.time % 60));
+                scoreText.text = "Best Grade: " + creature.grade + "/100";
+                infoText.text = creature.description;
+            }
             }
         }
-    }
 
-    public void OnCrabButtonClick()
-    {
-        foreach (GameObject creature in creaturesCaughtInfo)
+        public void OnCrabButtonClick()
         {
-            if (creature.CompareTag("Crab"))
+            foreach (CreatureData creature in creaturesCaughtInfo)
+            {
+                if (creature.creatureName == "Crab")
             {
                 creaturePanel.SetActive(true);
 
-                nameText.text = "Name: " + creature.GetComponent<Creature>().creatureName;
-                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.GetComponent<Creature>().time / 60), Mathf.FloorToInt(creature.GetComponent<Creature>().time % 60));
-                scoreText.text = "Best Grade: " + creature.GetComponent<Creature>().grade + "/100";
-                infoText.text = creature.GetComponent<Creature>().description;
+                nameText.text = "Name: " + creature.creatureName;
+                timeText.text = "Best Time: " + string.Format("{00}:{1:00}", Mathf.FloorToInt(creature.time / 60), Mathf.FloorToInt(creature.time % 60));
+                scoreText.text = "Best Grade: " + creature.grade + "/100";
+                infoText.text = creature.description;
             }
         }
     }

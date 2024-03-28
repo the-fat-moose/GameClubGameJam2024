@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -109,13 +110,13 @@ public class GameEnd : MonoBehaviour
                     bool creatureAlreadyAdded = false;
                     int index = 0;
 
-                    GameObject creatureToAdd = creatureCage.GetComponentInChildren<Creature>().transform.gameObject;
-                    creatureToAdd.GetComponent<Creature>().grade = finalScore;
-                    creatureToAdd.GetComponent<Creature>().time = finalTime;
+                    GameObject cageObject = creatureCage.GetComponentInChildren<Creature>().transform.gameObject;
+                    CreatureData creatureToAdd = new CreatureData(creatureCage.GetComponentInChildren<Creature>().creatureName, finalTime, finalScore, creatureCage.GetComponentInChildren<Creature>().description);
+
 
                     for (int i = 0; i < bestiaryClass.creaturesCaught.Count; i++)
                     {
-                        if (creatureToAdd == bestiaryClass.creaturesCaught[i])
+                        if (creatureToAdd.creatureName == bestiaryClass.creaturesCaught[i].creatureName)
                         {
                             creatureAlreadyAdded = true;
                             index = i;
@@ -127,13 +128,13 @@ public class GameEnd : MonoBehaviour
                     }
                     else
                     {
-                        if (bestiaryClass.creaturesCaught[index].GetComponent<Creature>().grade < finalScore)
+                        if (bestiaryClass.creaturesCaught[index].grade < finalScore)
                         {
-                            bestiaryClass.creaturesCaught[index].GetComponent<Creature>().grade = finalScore;
+                            bestiaryClass.creaturesCaught[index].grade = finalScore;
                         }
-                        if (bestiaryClass.creaturesCaught[index].GetComponent<Creature>().time > finalTime)
+                        if (bestiaryClass.creaturesCaught[index].time > finalTime)
                         {
-                            bestiaryClass.creaturesCaught[index].GetComponent<Creature>().time = finalTime;
+                            bestiaryClass.creaturesCaught[index].time = finalTime;
                         }
                     }
                    
@@ -152,6 +153,26 @@ public class GameEnd : MonoBehaviour
     {
         SceneManager.LoadScene("HubWorldScene");
     }
+}
+[Serializable]
+public class CreatureData 
+{
+    public string creatureName { get; private set; } = null;
+    public float time { get; set; } = 0f;
+    public float grade { get; set; } = 0f;
+    public string description { get; private set; } = null;
+
+
+    public CreatureData(string nameInfo, float timeInfo, float gradeInfo, string descriptionInfo)
+    {
+        creatureName = nameInfo;
+        time = timeInfo;
+        grade = gradeInfo;
+        description = descriptionInfo;
+
+
+    }
+        
 }
 
 

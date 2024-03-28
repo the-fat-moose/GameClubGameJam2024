@@ -26,7 +26,7 @@ public class GameStart : MonoBehaviour
     private void SpawnStartingItems()
     {
         gameManager = GameObject.Instantiate(gameManagerPref, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        firstPersonController = GameObject.Instantiate(firstPersonControllerPref, new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y + 5f), gameObject.transform.position.z), gameObject.transform.rotation);
+        firstPersonController = GameObject.Instantiate(firstPersonControllerPref, new Vector3(gameObject.transform.position.x, (gameObject.transform.position.y + 2f), gameObject.transform.position.z), gameObject.transform.rotation);
         creatureCage = GameObject.Instantiate(creatureCagePref, new Vector3((gameObject.transform.position.x + 10f), (gameObject.transform.position.y + 1f), gameObject.transform.position.z), gameObject.transform.rotation);
 
         if (gameManager.GetComponent<GameManager>() != null) { gameManager.GetComponent<GameManager>().FindPlayerItems(firstPersonController, creatureCage); } // assign first person controller and creature cage to the game manager

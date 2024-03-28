@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
-    private float health = 100f;
+    private float health = 50f;
     [SerializeField] private GameObject materialPickupPrefab;
     [SerializeField] Slider healthBar;
 

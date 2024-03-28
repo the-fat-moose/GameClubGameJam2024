@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     public int maxBulletCount { get; private set; } = 10;
     private float reloadTime = 2f;
     private bool canShoot = true; // used to not allow spam of reload
-    private float damageMultiplier = 5f;
+    private float damageMultiplier = 2.5f;
     public bool damageMultiplierEnabled { get; private set; } = false;
     public bool canActivateDamageBoost { get; set; } = false;
     public bool canDamageBoost { get; set; } = false;

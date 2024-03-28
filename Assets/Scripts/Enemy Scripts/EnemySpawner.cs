@@ -15,17 +15,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        TotalEnemiesToSpawn(); //this is for setting the amount of enemies to spawn based on the sneak step
+        //TotalEnemiesToSpawn(); //this is for setting the amount of enemies to spawn based on the sneak step
     }
 
     public void SetCreatureCage(GameObject _player)
     {
         player = _player.transform;
-
-        for (int i = 0; i < NumberOfEnemiesToSpawn; i++)
-        {
-            SpawnEnemy();
-        }
     }
 
     private void SpawnEnemy()
@@ -36,15 +31,20 @@ public class EnemySpawner : MonoBehaviour
         if (_enemy.GetComponent<EnemyAi>() != null) { enemy.GetComponent<EnemyAi>().SetCreatureCage(player.gameObject); }
     }
 
-    private void TotalEnemiesToSpawn()//this is going to be called multiple times and going to check for the bool even though it isnt going to change                                      
+    public void TotalEnemiesToSpawn()//this is going to be called multiple times and going to check for the bool even though it isnt going to change                                      
     {                                 //because I still want it to randomize the amount spawned multiple times
         if (sneakStep == true)
         {
-            NumberOfEnemiesToSpawn = Random.Range(3, 6);
+            NumberOfEnemiesToSpawn = Random.Range(6, 9);
         }
         else
         {
-            NumberOfEnemiesToSpawn = Random.Range(6, 9);
+            NumberOfEnemiesToSpawn = Random.Range(9, 15);
+        }
+
+        for (int i = 0; i < NumberOfEnemiesToSpawn; i++)
+        {
+            SpawnEnemy();
         }
     }
 

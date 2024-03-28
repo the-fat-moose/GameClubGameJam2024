@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -60,16 +61,9 @@ public class GameManager : MonoBehaviour
     {
         player = _player;
         creatureCage = _creatureCage;
+        enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
 
-        if (player.GetComponent<FirstPersonController>() != null && creatureCage.GetComponent<CageTarget>() != null) { SelectAbility(); }
-    }
-
-    public void SetEnemySpawner(GameObject _spawner)
-    {
-        if (_spawner != null)
-        {
-            enemySpawner = _spawner;
-        }
+        if (player.GetComponent<FirstPersonController>() != null && creatureCage.GetComponent<CageTarget>() != null && enemySpawner != null) { SelectAbility(); }
     }
 
     private void SetTimerString(float timer)
@@ -110,7 +104,10 @@ public class GameManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerUIManager>().toughSkinIcon.SetActive(true);
                 break;
             case 4: // Decreased Enemy Spawnrate
-                enemySpawner.GetComponent<EnemySpawner>().sneakStep = true;
+                if (enemySpawner.GetComponent<EnemySpawner>() != null) 
+                { 
+                    enemySpawner.GetComponent<EnemySpawner>().sneakStep = true;
+                }
                 player.GetComponentInChildren<PlayerUIManager>().silentStepIcon.SetActive(true);
                 break;
             default: // Dash in event of coding no worky
@@ -118,5 +115,7 @@ public class GameManager : MonoBehaviour
                 player.GetComponentInChildren<PlayerUIManager>().dashIcon.SetActive(true);
                 break;
         }
+
+        if (enemySpawner.GetComponent<EnemySpawner>() != null) { enemySpawner.GetComponent<EnemySpawner>().TotalEnemiesToSpawn(); }
     }
 }

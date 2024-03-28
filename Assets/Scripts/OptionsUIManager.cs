@@ -14,12 +14,17 @@ public class OptionsUIManager : MonoBehaviour
     [SerializeField] Slider mouseSensitivityXSlider;
     [SerializeField] Slider mouseSensitivityYSlider;
 
+    [Header("Fullscreen")]
+    [SerializeField] Toggle fullscreenCheckbox;
+
     public float masterVolume { get; private set; }
     public float sfxVolume { get; private set; }
     public float musicVolume { get; private set; }
 
     public float mouseSensitivityX { get; private set; }
     public float mouseSensitivityY { get; private set; }
+
+    public bool fullscreen { get; private set; } = false;
 
     private void Start()
     {
@@ -28,6 +33,7 @@ public class OptionsUIManager : MonoBehaviour
         musicVolume = musicVolumeSlider.value;
         mouseSensitivityX = mouseSensitivityXSlider.value;
         mouseSensitivityY = mouseSensitivityYSlider.value;
+        OnFullScreenCheckBoxUpdate(fullscreenCheckbox.isOn);
     }
 
     public void OnMasterVolumeSliderUpdate()
@@ -53,5 +59,20 @@ public class OptionsUIManager : MonoBehaviour
     public void OnMouseSensitivityYSliderUpdate()
     {
         mouseSensitivityY = mouseSensitivityYSlider.value;
+    }
+
+    public void OnFullScreenCheckBoxUpdate(bool toggle)
+    {
+        fullscreen = toggle;
+        Debug.Log(fullscreenCheckbox.isOn);
+
+        if (fullscreen) 
+        {
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
     }
 }

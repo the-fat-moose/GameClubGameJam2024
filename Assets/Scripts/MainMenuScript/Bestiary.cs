@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Bestiary : MonoBehaviour
 {
     public List<CreatureData> creaturesCaught = new List<CreatureData>();
-    private static int index = 0;
     private static Bestiary instance = null;
     // called zero
     private void Awake()

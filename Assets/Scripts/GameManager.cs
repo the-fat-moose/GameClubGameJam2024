@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool canTimerRun { get; set; } = false;
     private GameObject enemySpawner;
     private GameObject pauseMenu;
-    private bool isGamePaused;
+    public bool isGamePaused { get; set; } = false;
 
     private void Start()
     {

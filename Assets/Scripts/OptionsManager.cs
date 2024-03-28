@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class OptionsManager : MonoBehaviour
 {
+    private static OptionsManager instance;
+
     private GameObject optionsUIManager;
     public float masterVolume { get; private set; }
     public float sfxVolume { get; private set; }
@@ -15,7 +17,17 @@ public class OptionsManager : MonoBehaviour
     // called zero
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         Debug.Log("Awake");
     }
 

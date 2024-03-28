@@ -18,6 +18,7 @@ public class PauseMenuButtons : MonoBehaviour
         if (player != null)
         {
             player.transform.GetChild(0).gameObject.SetActive(true);
+            if (player.GetComponent<FirstPersonController>() != null) { player.GetComponent<FirstPersonController>().CanMove = true; }
         }
         gameObject.SetActive(false);
 

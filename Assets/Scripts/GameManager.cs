@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
             if (player != null) 
             { 
                 player.transform.GetChild(0).gameObject.SetActive(false);
+                if (player.GetComponent<FirstPersonController>() != null) { player.GetComponent<FirstPersonController>().CanMove = false; }
             }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
             if (player != null)
             {
                 player.transform.GetChild(0).gameObject.SetActive(true);
+                if (player.GetComponent<FirstPersonController>() != null) { player.GetComponent<FirstPersonController>().CanMove = true; }
             }
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

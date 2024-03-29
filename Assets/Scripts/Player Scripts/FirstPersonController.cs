@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
@@ -60,6 +61,14 @@ public class FirstPersonController : MonoBehaviour
     [Header("Shooting Parameters")]
     private bool canShoot = true;
 
+    [Header("Audio Parameters")]
+    [SerializeField] private AudioClip walkingSoundSnow;
+    [SerializeField] private AudioClip walkingSoundDirt;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip dashSound;
+    [SerializeField] private AudioSource playerAudioSourceWalk;
+    [SerializeField] private AudioSource playerAudioSourceOneShots;
+    
     public GameObject creatureCage { get; private set; } = null;
     public int cageMaterialPickups { get; set; } = 0;
     private float healAmount = 10f;
@@ -68,10 +77,12 @@ public class FirstPersonController : MonoBehaviour
     public CharacterController characterController { get; private set; }
     private Shooting shootScript;
     private PlayerUIManager playerUIManager;
-    private OptionsManager optionsManager;
+    public OptionsManager optionsManager { get; private set; }
 
     private Vector3 moveDirection;
     private Vector2 currentInput;
+
+    Scene currentScene;
 
     private float rotationX = 0.0f; // used for look view clamping
 
@@ -88,6 +99,16 @@ public class FirstPersonController : MonoBehaviour
     private void Start()
     {
         optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
+        if (playerAudioSourceOneShots != null) { playerAudioSourceOneShots.loop = false; }
+        if (playerAudioSourceWalk != null) { playerAudioSourceWalk.loop = true; }
+
+        currentScene = SceneManager.GetActiveScene();
+
+        if (playerAudioSourceWalk != null)
+        {
+            if (currentScene.name == "Forest-1" || currentScene.name == "Sandy-1") { playerAudioSourceWalk.clip = walkingSoundDirt; }
+            else if (currentScene.name == "Rocky-1") { playerAudioSourceWalk.clip = walkingSoundSnow; }
+        }
     }
 
     public void SetCreatureCage(GameObject _creatureCage)
@@ -117,6 +138,29 @@ public class FirstPersonController : MonoBehaviour
         if (characterController.isGrounded && canDoubleJump) { remainingJumps = 1; } // resets the players ability to doublejump upon hitting the ground
 
         currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            if (playerAudioSourceWalk != null && optionsManager != null)
+            {
+                if (IsSprinting) // increase pitch of sound file to make it appear faster when the player is running
+                {
+                    if (currentScene.name == "Forest-1" || currentScene.name == "Sandy-1") { playerAudioSourceWalk.pitch = 1.25f; }
+                    else if (currentScene.name == "Rocky-1") { playerAudioSourceWalk.pitch = 1.5f; }
+                }
+                else
+                {
+                    if (currentScene.name == "Forest-1" || currentScene.name == "Sandy-1") { playerAudioSourceWalk.pitch = 0.75f; }
+                    else if (currentScene.name == "Rocky-1") { playerAudioSourceWalk.pitch = 1f; }
+                }
+                playerAudioSourceWalk.volume = 1f * (optionsManager.sfxVolume * optionsManager.masterVolume);
+                playerAudioSourceWalk.enabled = true;
+            }
+        }
+        else
+        {
+            if (playerAudioSourceWalk != null) { playerAudioSourceWalk.enabled = false; }
+        }
+
 
         float moveDirectionY = moveDirection.y;
         moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
@@ -159,6 +203,7 @@ public class FirstPersonController : MonoBehaviour
         if (ShouldShoot)
         {
             shootScript.Shoot(playerCamera.transform);
+            if (playerAudioSourceOneShots != null && shootSound != null && optionsManager != null) { playerAudioSourceOneShots.PlayOneShot(shootSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
             StartCoroutine(CanPlayerShoot());
         }
     }
@@ -172,6 +217,7 @@ public class FirstPersonController : MonoBehaviour
             float moveDirectionY = moveDirection.y;
             moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
             moveDirection.y = moveDirectionY;
+            if (playerAudioSourceOneShots != null && dashSound != null && optionsManager != null) { playerAudioSourceOneShots.PlayOneShot(dashSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
 
             StartCoroutine(DashCooldown());
         }

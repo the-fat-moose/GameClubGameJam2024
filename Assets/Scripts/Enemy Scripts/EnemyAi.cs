@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,12 +17,21 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private Vector3 walkPoint;
     private bool walkPointSet;
     [SerializeField] private float walkPointRange;
-
-    //Attacking
+    
+    [Header("Gunshot Drawing")]
+    [SerializeField] Transform gunTip;
+    [SerializeField] Material lineMat;
+    private LineRenderer lr;
     [SerializeField] private float timeBetweenAttacks;
     private bool alreadyAttacked;
+    RaycastHit hit;
+    [SerializeField] private Transform gunPoint;
 
-    //States 
+    [Header("Basic Gun Mechanics")]
+    [SerializeField] private float damage = 5f;
+    [SerializeField] private float range = 100f;
+
+    [Header("States")]
     public float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
@@ -136,18 +146,70 @@ public class EnemyAi : MonoBehaviour
         if(!alreadyAttacked)
         {
             //attack code
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);*/
+
+            Shoot();
+            
         }
     }
 
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void Shoot()
+    {
+        gunPoint.transform.LookAt(player.position);
+        if (Physics.Raycast(gunPoint.position, gunPoint.transform.forward, out hit, range))
+        {
+            if (!alreadyAttacked)
+            {
+                alreadyAttacked = true;
+                if (gameObject.GetComponent<LineRenderer>() == null)
+                {
+                    lr = gameObject.AddComponent<LineRenderer>();
+                }
+                lr.positionCount = 2;
+
+                DrawShot();
+
+                if (hit.transform.CompareTag("CreatureCage"))
+                {
+                    if (hit.transform.GetComponent<CageTarget>() != null)
+                    {
+                        hit.transform.GetComponent<CageTarget>().TakeDamage(damage);
+                    }
+                   
+                }
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
+        }
+    }
+
+    private void DrawShot()
+    {
+        if (!lr) return;
+        lr.material = lineMat;
+        lr.startColor = Color.white;
+        lr.endColor = Color.white;
+        lr.startWidth = 0.05f;
+        lr.endWidth = 0.05f;
+        lr.SetPosition(0, gunTip.position);
+        lr.SetPosition(1, hit.point);
+        StartCoroutine(DeleteShotLine());
+    }
+
+    private IEnumerator DeleteShotLine()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Destroy(lr);
     }
 
     private void OnDrawGizmosSelected()

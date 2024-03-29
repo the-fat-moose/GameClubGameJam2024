@@ -250,7 +250,7 @@ public class FirstPersonController : MonoBehaviour
 
     private IEnumerator CrouchStand()
     {
-        if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 1f)) { yield break; }
+        if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 2f)) { yield break; }
 
         duringCrouchAnimation = true;
 

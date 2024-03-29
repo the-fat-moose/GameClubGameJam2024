@@ -97,11 +97,12 @@ public class OptionsUIManager : MonoBehaviour
 
         if (fullscreen) 
         {
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
         }
         else
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
+            Screen.SetResolution(1280, 720, false);
         }
     }
 }

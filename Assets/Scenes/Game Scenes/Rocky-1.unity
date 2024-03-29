@@ -30787,6 +30787,10 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 52ea47b4c1e464a418a959ede43dec5a, type: 2}
+    - target: {fileID: 1498237290240497579, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2604817412586889378, guid: cc48c774d5e74884590446e51a5f1e06, type: 3}
       propertyPath: m_Name
       value: NavMesh

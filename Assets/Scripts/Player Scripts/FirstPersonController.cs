@@ -250,7 +250,11 @@ public class FirstPersonController : MonoBehaviour
 
     private IEnumerator CrouchStand()
     {
+        float dist = Vector3.Distance(creatureCage.transform.position, gameObject.transform.position);
+        Debug.Log("Distance: " + dist);
+
         if (isCrouching && Physics.Raycast(playerCamera.transform.position, Vector3.up, 2f)) { yield break; }
+        if (isCrouching && dist <= 2.2f) { yield break; }
 
         duringCrouchAnimation = true;
 

@@ -74,6 +74,7 @@ public class FirstPersonController : MonoBehaviour
     private float healAmount = 10f;
 
     private Camera playerCamera;
+    private Camera gunCamera;
     public CharacterController characterController { get; private set; }
     private Shooting shootScript;
     private PlayerUIManager playerUIManager;
@@ -88,7 +89,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
-        playerCamera = GetComponentInChildren<Camera>();
+        playerCamera = gameObject.transform.GetChild(1).GetComponent<Camera>();
+        gunCamera = gameObject.transform.GetChild(2).GetComponent<Camera>();
         characterController = GetComponent<CharacterController>();
         shootScript = GetComponent<Shooting>();
         playerUIManager = GetComponentInChildren<PlayerUIManager>();
@@ -181,6 +183,7 @@ public class FirstPersonController : MonoBehaviour
         rotationX -= Input.GetAxis("Mouse Y") * (lookSpeedY * sensY);
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        gunCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * (lookSpeedX * sensX), 0);
     }
 

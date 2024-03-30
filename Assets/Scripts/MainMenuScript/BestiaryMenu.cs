@@ -13,8 +13,6 @@ public class BestiaryMenu : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text infoText;
 
-    private Image tgImage;
-
     [Header("Creature Button Parameters")]
     [SerializeField] private Button batButton;
     [SerializeField] private Button caterpillarButton;
@@ -51,30 +49,63 @@ public class BestiaryMenu : MonoBehaviour
 
         SpriteState ss = new SpriteState();
 
-        tgImage.sprite = batLocked;
-        batButton.targetGraphic = tgImage;
+        batButton.image.sprite = batLocked;
         ss.highlightedSprite = batLocked;
         batButton.spriteState = ss;
 
-        tgImage.sprite = caterpillarLocked;
-        caterpillarButton.targetGraphic = tgImage;
+        caterpillarButton.image.sprite = caterpillarLocked;
         ss.highlightedSprite = caterpillarLocked;
         caterpillarButton.spriteState = ss;
 
-        tgImage.sprite = rockLocked;
-        rockButton.targetGraphic = tgImage;
+        rockButton.image.sprite = rockLocked;
         ss.highlightedSprite = rockLocked;
         rockButton.spriteState = ss;
 
-        tgImage.sprite = dinoLocked;
-        dinoButton.targetGraphic = tgImage;
+        dinoButton.image.sprite = dinoLocked;
         ss.highlightedSprite = dinoLocked;
         dinoButton.spriteState = ss;
 
-        tgImage.sprite = crabLocked;
-        crabButton.targetGraphic = tgImage;
+        crabButton.image.sprite = crabLocked;
         ss.highlightedSprite = crabLocked;
         crabButton.spriteState = ss;
+
+        foreach (CreatureData creature in creaturesCaughtInfo) 
+        {  
+            if (creature != null) 
+            {
+                if (creature.creatureName == "Caterpillar")
+                {
+                    caterpillarButton.image.sprite = caterpillarUnlocked;
+                    ss.highlightedSprite = caterpillarHighlighted;
+                    caterpillarButton.spriteState = ss;
+                }
+                else if (creature.creatureName == "Bat")
+                {
+                    batButton.image.sprite = batUnlocked;
+                    ss.highlightedSprite = batHighlighted;
+                    batButton.spriteState = ss;
+                }
+                else if (creature.creatureName == "Dino")
+                {
+                    dinoButton.image.sprite = dinoUnlocked;
+                    ss.highlightedSprite = dinoHighlighted;
+                    dinoButton.spriteState = ss;
+                }
+                else if (creature.creatureName == "Rock")
+                {
+                    rockButton.image.sprite = rockUnlocked;
+                    ss.highlightedSprite = rockHighlighted;
+                    rockButton.spriteState = ss;
+                }
+                else if (creature.creatureName == "Crab")
+                {
+                    crabButton.image.sprite = crabUnlocked;
+                    ss.highlightedSprite = crabHighlighted;
+                    crabButton.spriteState = ss;
+
+                }
+            }
+        }
     }
 
     public void OnCaterpillarButtonClick()

@@ -196,8 +196,8 @@ public class EnemyAi : MonoBehaviour
     {
         if (!lr) return;
         lr.material = lineMat;
-        lr.startColor = Color.white;
-        lr.endColor = Color.white;
+        lr.startColor = Color.red;
+        lr.endColor = Color.red;
         lr.startWidth = 0.05f;
         lr.endWidth = 0.05f;
         lr.SetPosition(0, gunTip.position);

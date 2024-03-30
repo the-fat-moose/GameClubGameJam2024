@@ -333,7 +333,7 @@ MonoBehaviour:
   walkingSoundSnow: {fileID: 8300000, guid: 469eb4fb66d007f44aec571993c8b72d, type: 3}
   walkingSoundDirt: {fileID: 8300000, guid: 9a6ab7c0d3c1d9846a182374cd4bbbb3, type: 3}
   dashSound: {fileID: 8300000, guid: f2dc9e74cc3b9a74482eef2f2b857b41, type: 3}
-  abilityCooldownEnd: {fileID: 0}
+  abilityCooldownEnd: {fileID: 8300000, guid: 8d928bdfb73f8d249889610335591264, type: 3}
   playerAudioSourceWalk: {fileID: 37779027751419343}
   playerAudioSourceOneShots: {fileID: 5685924262427873168}
 --- !u!82 &37779027751419343

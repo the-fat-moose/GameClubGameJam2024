@@ -16,11 +16,13 @@ public class UITransitionManager : MonoBehaviour
     public GameObject BackButton;
     public GameObject BackAcceptButton;
     public Image fade;
+    public Image fadeout;
 
 
     private void Awake()
     {
         StartCoroutine(FadeIn(0.5f));
+        fadeout.enabled = false;
     }
     // Start is called before the first frame update
     void Start()
@@ -104,15 +106,15 @@ public class UITransitionManager : MonoBehaviour
 
     public void LevelOneStart()
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(FadeOut(1f, 2));
     }
     public void LevelTwoStart()
     {
-        SceneManager.LoadScene(3);
+        StartCoroutine(FadeOut(1f, 3));
     }
     public void LevelThreeStart()
     {
-        SceneManager.LoadScene(4);
+        StartCoroutine(FadeOut(1f, 4));
     }
 
     public void QuitButton()
@@ -134,7 +136,21 @@ public class UITransitionManager : MonoBehaviour
             fade.color = new Color(0, 0, 0, alpha);
             yield return null;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         fade.enabled = false;
+    }
+    public IEnumerator FadeOut(float duration, int levelNum)
+    {
+        fadeout.enabled = true;
+        float counter = 0;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            float alpha = Mathf.Lerp(0, 1, counter / duration);
+            fadeout.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+        SceneManager.LoadScene(levelNum);
     }
 }

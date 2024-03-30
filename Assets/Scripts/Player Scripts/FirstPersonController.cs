@@ -64,10 +64,9 @@ public class FirstPersonController : MonoBehaviour
     [Header("Audio Parameters")]
     [SerializeField] private AudioClip walkingSoundSnow;
     [SerializeField] private AudioClip walkingSoundDirt;
-    [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip dashSound;
     [SerializeField] private AudioSource playerAudioSourceWalk;
-    [SerializeField] private AudioSource playerAudioSourceOneShots;
+    public AudioSource playerAudioSourceOneShots;
     
     public GameObject creatureCage { get; private set; } = null;
     public int cageMaterialPickups { get; set; } = 0;
@@ -206,7 +205,6 @@ public class FirstPersonController : MonoBehaviour
         if (ShouldShoot)
         {
             shootScript.Shoot(playerCamera.transform);
-            if (playerAudioSourceOneShots != null && shootSound != null && optionsManager != null) { playerAudioSourceOneShots.PlayOneShot(shootSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
             StartCoroutine(CanPlayerShoot());
         }
     }

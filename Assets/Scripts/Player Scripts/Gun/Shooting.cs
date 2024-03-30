@@ -29,6 +29,9 @@ public class Shooting : MonoBehaviour
     [SerializeField] KeyCode reloadKey = KeyCode.R;
     [SerializeField] KeyCode damageMultiplierKey = KeyCode.E;
 
+    [Header("Audio Parameters")]
+    [SerializeField] private AudioClip shootSound;
+
     PlayerUIManager playerUIManager;
 
     private void Start()
@@ -70,6 +73,13 @@ public class Shooting : MonoBehaviour
                 {
                     if (damageMultiplierEnabled) { currentTarget.TakeDamage(damage * damageMultiplier); }
                     else { currentTarget.TakeDamage(damage); }
+                }
+
+                if (gameObject.GetComponent<FirstPersonController>() != null)
+                {
+                    OptionsManager optionsManager = gameObject.GetComponent<FirstPersonController>().optionsManager;
+                    AudioSource oneShotSource = gameObject.GetComponent<FirstPersonController>().playerAudioSourceOneShots;
+                    if (oneShotSource != null && optionsManager != null) { oneShotSource.PlayOneShot(shootSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
                 }
 
                 currentBulletCount--;

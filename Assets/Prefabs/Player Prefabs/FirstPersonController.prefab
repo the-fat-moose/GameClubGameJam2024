@@ -264,6 +264,7 @@ MonoBehaviour:
   lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   reloadKey: 114
   damageMultiplierKey: 101
+  shootSound: {fileID: 8300000, guid: b9661448eacbef44fa6e4ebad7789641, type: 3}
 --- !u!143 &2124320761392859462
 CharacterController:
   m_ObjectHideFlags: 0
@@ -328,7 +329,6 @@ MonoBehaviour:
   standingCenterPoint: {x: 0, y: 0, z: 0}
   walkingSoundSnow: {fileID: 8300000, guid: 469eb4fb66d007f44aec571993c8b72d, type: 3}
   walkingSoundDirt: {fileID: 8300000, guid: 9a6ab7c0d3c1d9846a182374cd4bbbb3, type: 3}
-  shootSound: {fileID: 8300000, guid: b9661448eacbef44fa6e4ebad7789641, type: 3}
   dashSound: {fileID: 8300000, guid: f2dc9e74cc3b9a74482eef2f2b857b41, type: 3}
   playerAudioSourceWalk: {fileID: 37779027751419343}
   playerAudioSourceOneShots: {fileID: 5685924262427873168}

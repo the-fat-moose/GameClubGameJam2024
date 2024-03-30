@@ -8,24 +8,35 @@ public class Target : MonoBehaviour
 {
     private float health = 50f;
     [SerializeField] private GameObject materialPickupPrefab;
-    [SerializeField] Slider healthBar;
+
+    [Header("Audio Parameters")]
+    [SerializeField] private AudioClip enemyDamageSound;
+    [SerializeField] private AudioClip enemyDeathSound;
+    private AudioSource enemyAudioSource;
+    private OptionsManager optionsManager;
 
     private void Start()
     {
-        //healthBar.value = health;
+        enemyAudioSource = GetComponent<AudioSource>();
+        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
     }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
-        //healthBar.value = health;
         if (health <= 0f)
         {
+            if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDeathSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+
             if (this.gameObject.CompareTag("Enemy"))
             {
                 TryForDropChance();
-                Destroy(gameObject);
+                Destroy(gameObject, 0.75f);
             }
+        }
+        else
+        {
+            if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDamageSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
         }
     }
 

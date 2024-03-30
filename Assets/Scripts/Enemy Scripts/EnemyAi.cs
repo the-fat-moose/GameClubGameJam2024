@@ -28,7 +28,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private Transform gunPoint;
 
     [Header("Basic Gun Mechanics")]
-    [SerializeField] private float damage = 5f;
+    private float damage = 5f;
     [SerializeField] private float range = 100f;
 
     [Header("States")]

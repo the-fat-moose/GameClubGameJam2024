@@ -43,6 +43,7 @@ public class GameEnd : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             creatureCage = other.GetComponent<FirstPersonController>().creatureCage;
+            other.GetComponent<FirstPersonController>().CanMove = false;
             gameManager = GameObject.Find("GameManager(Clone)");
             if (gameManager != null && creatureCage != null) 
             {

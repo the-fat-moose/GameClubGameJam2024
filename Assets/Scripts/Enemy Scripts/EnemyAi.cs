@@ -35,17 +35,17 @@ public class EnemyAi : MonoBehaviour
     public float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
-    public float health;
-
     private Animator enemyAnimator;
 
     private GameObject gameEndCollider;
+    private Target target;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponentInChildren<Animator>();
+        target = GetComponent<Target>();
         gameEndCollider = GameObject.Find("GameEndCollider");
 
         if (player == null) { player = GameObject.FindFirstObjectByType<CageTarget>().transform; }
@@ -61,7 +61,7 @@ public class EnemyAi : MonoBehaviour
     {
         if (gameEndCollider != null && gameEndCollider.GetComponent<GameEnd>().gameIsPaused == false)
         {
-            if (player != null)
+            if (player != null && target.health > 0f)
             {
                 //check for sight and attack range
                 playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);

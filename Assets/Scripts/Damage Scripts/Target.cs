@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
-    private float health = 50f;
+    public float health { get; private set; } = 50f;
     [SerializeField] private GameObject materialPickupPrefab;
 
     [Header("Audio Parameters")]
@@ -15,10 +15,13 @@ public class Target : MonoBehaviour
     private AudioSource enemyAudioSource;
     private OptionsManager optionsManager;
 
+    private SkinnedMeshRenderer skinnedMeshRenderer;
+
     private void Start()
     {
         enemyAudioSource = GetComponent<AudioSource>();
         optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TakeDamage(float amount)
@@ -30,8 +33,9 @@ public class Target : MonoBehaviour
 
             if (this.gameObject.CompareTag("Enemy"))
             {
+                if (skinnedMeshRenderer != null) { skinnedMeshRenderer.enabled = false; }
                 TryForDropChance();
-                Destroy(gameObject, 0.75f);
+                Destroy(gameObject, 2f);
             }
         }
         else

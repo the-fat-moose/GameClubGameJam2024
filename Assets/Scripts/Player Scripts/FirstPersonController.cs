@@ -302,5 +302,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         canDash = true;
+
+        if (playerAudioSourceOneShots != null && optionsManager != null) { playerAudioSourceOneShots.PlayOneShot(abilityCooldownEnd, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
     }
 }

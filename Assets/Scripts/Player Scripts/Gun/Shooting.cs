@@ -31,6 +31,11 @@ public class Shooting : MonoBehaviour
 
     [Header("Audio Parameters")]
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip bulletIncreaseSound;
+    [SerializeField] private AudioClip abilityCooldownStart;
+    [SerializeField] private AudioClip abilityCooldownEnd;
+    AudioSource oneShotSource;
+    OptionsManager optionsManager;
 
     PlayerUIManager playerUIManager;
 
@@ -77,8 +82,8 @@ public class Shooting : MonoBehaviour
 
                 if (gameObject.GetComponent<FirstPersonController>() != null)
                 {
-                    OptionsManager optionsManager = gameObject.GetComponent<FirstPersonController>().optionsManager;
-                    AudioSource oneShotSource = gameObject.GetComponent<FirstPersonController>().playerAudioSourceOneShots;
+                    optionsManager = gameObject.GetComponent<FirstPersonController>().optionsManager;
+                    oneShotSource = gameObject.GetComponent<FirstPersonController>().playerAudioSourceOneShots;
                     if (oneShotSource != null && optionsManager != null) { oneShotSource.PlayOneShot(shootSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
                 }
 
@@ -126,6 +131,11 @@ public class Shooting : MonoBehaviour
     {
         damageMultiplierEnabled = true;
         canActivateDamageBoost = false;
+
+        oneShotSource = gameObject.GetComponent<FirstPersonController>().playerAudioSourceOneShots;
+        optionsManager = gameObject.GetComponent<FirstPersonController>().optionsManager;
+        if (oneShotSource != null && optionsManager != null) { oneShotSource.PlayOneShot(bulletIncreaseSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+
         Debug.Log("Damage boost ENABLED");
 
         yield return new WaitForSeconds(5f);
@@ -139,7 +149,9 @@ public class Shooting : MonoBehaviour
     {
         damageBoostCooldown = damageBoostMaxCooldown;
 
-        while(damageBoostCooldown > 0) 
+        if (oneShotSource != null && optionsManager != null) { oneShotSource.PlayOneShot(abilityCooldownStart, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+
+        while (damageBoostCooldown > 0) 
         {
             damageBoostCooldown -= Time.deltaTime;
 
@@ -147,5 +159,7 @@ public class Shooting : MonoBehaviour
         }
 
         canActivateDamageBoost = true;
+
+        if (oneShotSource != null && optionsManager != null) { oneShotSource.PlayOneShot(abilityCooldownEnd, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
     }
 }

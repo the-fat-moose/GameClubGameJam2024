@@ -17,9 +17,16 @@ public class CageTarget : MonoBehaviour
     PlayerUIManager playerUIManager;
     private GameObject player;
 
+    [Header("Audio Parameters")]
+    [SerializeField] private AudioClip cageDamagedSound;
+    private AudioSource cageAudioSource;
+    private OptionsManager optionsManager;
+
     private void Start()
     {
+        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
         controller = GetComponent<CageController>();
+        cageAudioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         SetHealthPercentage();
     }
@@ -29,7 +36,7 @@ public class CageTarget : MonoBehaviour
         player = _player;
 
         if (player != null) 
-        { 
+        {
             playerUIManager = player.GetComponentInChildren<PlayerUIManager>();
             if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
         }
@@ -39,6 +46,8 @@ public class CageTarget : MonoBehaviour
     {
         if (hasDamageReduction) { currentHealth -= amount * damageReductionPercentage; }
         else { currentHealth -= amount; }
+
+        if (cageAudioSource != null && optionsManager != null) { cageAudioSource.PlayOneShot(cageDamagedSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
 
         SetHealthPercentage();
         if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }

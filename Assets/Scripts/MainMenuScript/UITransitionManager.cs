@@ -15,6 +15,7 @@ public class UITransitionManager : MonoBehaviour
     public GameObject audioPanel;
     public GameObject BackButton;
     public GameObject BackAcceptButton;
+    public GameObject CreaturePanel;
     public Image fade;
     public Image fadeout;
 
@@ -50,6 +51,10 @@ public class UITransitionManager : MonoBehaviour
                 controlsPanel.SetActive(false);
                 BackButton.SetActive(true);
                 BackAcceptButton.SetActive(false);
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && CreaturePanel.activeInHierarchy)
+            {
+                CreaturePanel.SetActive(false);
             }
         }
     }

@@ -139,7 +139,7 @@ public class FirstPersonController : MonoBehaviour
         if (characterController.isGrounded && canDoubleJump) { remainingJumps = 1; } // resets the players ability to doublejump upon hitting the ground
 
         currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && characterController.isGrounded)
         {
             if (playerAudioSourceWalk != null && optionsManager != null)
             {

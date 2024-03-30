@@ -43,6 +43,8 @@ public class GameEnd : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             creatureCage = other.GetComponent<FirstPersonController>().creatureCage;
+            other.GetComponent<FirstPersonController>().playerAudioSourceWalk.enabled = false;
+            other.GetComponent<FirstPersonController>().playerAudioSourceOneShots.enabled = false;
             other.GetComponent<FirstPersonController>().CanMove = false;
             gameManager = GameObject.Find("GameManager(Clone)");
             if (gameManager != null && creatureCage != null) 
@@ -145,8 +147,6 @@ public class GameEnd : MonoBehaviour
             timeText.text = string.Format("Time: {00}:{1:00}", Mathf.FloorToInt(finalTime / 60), Mathf.FloorToInt(finalTime % 60));
             healthText.text = "Health Remaining: " + creatureCage.GetComponent<CageTarget>().currentHealth + "/" + creatureCage.GetComponent<CageTarget>().maxHealth;
             gradeText.text = "Grade: " + finalScore + "/100";
-
-            Invoke("OnMainMenuButtonClick", 10f);
         }
     }
 

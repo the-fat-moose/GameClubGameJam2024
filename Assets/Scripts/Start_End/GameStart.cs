@@ -37,6 +37,7 @@ public class GameStart : MonoBehaviour
             { 
                 firstPersonController.GetComponent<FirstPersonController>().SetCreatureCage(creatureCage);
                 firstPersonController.GetComponentInChildren<PlayerUIManager>().InitializeUI();
+                firstPersonController.GetComponentInChildren<PlayerUIManager>().GetCageHealthPercentage(creatureCage.GetComponent<CageTarget>().healthPercentage, creatureCage.GetComponent<CageTarget>().currentHealth, creatureCage.GetComponent<CageTarget>().maxHealth);
             }
         }
     }

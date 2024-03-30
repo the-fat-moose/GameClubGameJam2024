@@ -22,13 +22,17 @@ public class CageTarget : MonoBehaviour
     private AudioSource cageAudioSource;
     private OptionsManager optionsManager;
 
-    private void Start()
+    private void Awake()
     {
-        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
         controller = GetComponent<CageController>();
         cageAudioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         SetHealthPercentage();
+    }
+
+    private void Start()
+    {
+        optionsManager = GameObject.FindFirstObjectByType<OptionsManager>();
     }
 
     public void SetPlayerObject(GameObject _player)

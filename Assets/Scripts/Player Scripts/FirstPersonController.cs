@@ -66,6 +66,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private AudioClip walkingSoundDirt;
     [SerializeField] private AudioClip dashSound;
     [SerializeField] private AudioClip abilityCooldownEnd;
+    [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioSource playerAudioSourceWalk;
     public AudioSource playerAudioSourceOneShots;
     
@@ -193,6 +194,8 @@ public class FirstPersonController : MonoBehaviour
         {
             moveDirection.y = jumpForce;
             if (canDoubleJump && !characterController.isGrounded) { remainingJumps = 0; }
+
+            if (playerAudioSourceOneShots != null && optionsManager != null && jumpSound != null) { playerAudioSourceOneShots.PlayOneShot(jumpSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
         }
     }
 

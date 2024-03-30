@@ -47,6 +47,8 @@ public class EnemyAi : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponentInChildren<Animator>();
         gameEndCollider = GameObject.Find("GameEndCollider");
+
+        if (player == null) { player = GameObject.FindFirstObjectByType<CageTarget>().transform; }
     }
 
     public void SetCreatureCage(GameObject _player)

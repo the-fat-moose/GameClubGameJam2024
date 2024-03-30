@@ -14,16 +14,18 @@ public class GameManager : MonoBehaviour
     private GameObject enemySpawner;
     private GameObject pauseMenu;
     public bool isGamePaused { get; set; } = false;
+    private GameEnd gameEnd;
 
     private void Start()
     {
         pauseMenu = GameObject.Find("PauseCanvas");
         if (pauseMenu != null ) { pauseMenu.SetActive(false); }
+        gameEnd = GameObject.FindFirstObjectByType<GameEnd>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) && !isGamePaused) 
+        if (Input.GetKeyUp(KeyCode.Escape) && !isGamePaused && !gameEnd.gameIsPaused) 
         {
             pauseMenu.SetActive(true);
             if (player != null) 
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             isGamePaused = true;
         }
-        else if (Input.GetKeyUp(KeyCode.Escape) && isGamePaused)
+        else if (Input.GetKeyUp(KeyCode.Escape) && isGamePaused && !gameEnd.gameIsPaused)
         {
             Time.timeScale = 1f;
             if (player != null)

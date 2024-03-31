@@ -91,6 +91,7 @@ public class UITransitionManager : MonoBehaviour
         controlsPanel.SetActive(false);
         BackAcceptButton.SetActive(false);
         BackButton.SetActive(false);
+        CreaturePanel.SetActive(false);
     }
     public void Options()
     {

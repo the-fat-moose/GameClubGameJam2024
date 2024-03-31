@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureDescription: These creatures are docile by nature. They spend most of their
-    time inching along and eating leaves.
+    time inching along and knocking things off shelves
   creatureNameText: Caterpillar
 --- !u!1001 &7260311418160586206
 PrefabInstance:

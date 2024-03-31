@@ -15,6 +15,8 @@ public class Target : MonoBehaviour
     private AudioSource enemyAudioSource;
     private OptionsManager optionsManager;
 
+    private bool isAlreadyDead = false;
+
     private SkinnedMeshRenderer skinnedMeshRenderer;
 
     private void Start()
@@ -26,21 +28,26 @@ public class Target : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
-        if (health <= 0f)
+        if (!isAlreadyDead) 
         {
-            if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDeathSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
-
-            if (this.gameObject.CompareTag("Enemy"))
+            health -= amount;
+            if (health <= 0f)
             {
-                if (skinnedMeshRenderer != null) { skinnedMeshRenderer.enabled = false; }
-                TryForDropChance();
-                Destroy(gameObject, 2f);
+                isAlreadyDead = true;
+
+                if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDeathSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+
+                if (this.gameObject.CompareTag("Enemy"))
+                {
+                    if (skinnedMeshRenderer != null) { skinnedMeshRenderer.enabled = false; }
+                    TryForDropChance();
+                    Destroy(gameObject, 2f);
+                }
             }
-        }
-        else
-        {
-            if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDamageSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+            else
+            {
+                if (enemyAudioSource != null && optionsManager != null) { enemyAudioSource.PlayOneShot(enemyDamageSound, 1f * (optionsManager.sfxVolume * optionsManager.masterVolume)); }
+            }
         }
     }
 

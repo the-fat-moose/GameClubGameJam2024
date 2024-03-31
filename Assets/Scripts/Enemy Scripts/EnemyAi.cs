@@ -138,8 +138,7 @@ public class EnemyAi : MonoBehaviour
     {
         enemyAnimator.SetBool("IsAttackingCage", true);
         enemyAnimator.SetBool("IsChasingCage", false);
-        enemyAnimator.SetBool("IsPatrolling", true);
-
+        enemyAnimator.SetBool("IsPatrolling", false);
         //Make Sure enemy doesn't move
         agent.SetDestination(transform.position);
 

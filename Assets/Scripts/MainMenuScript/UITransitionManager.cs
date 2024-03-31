@@ -19,6 +19,13 @@ public class UITransitionManager : MonoBehaviour
     public Image fade;
     public Image fadeout;
 
+    public GameObject HelpMenu;
+    public GameObject helpPanel1;
+    public GameObject helpPanel2;
+    public GameObject helpPanel3;
+    public GameObject helpPanel4;
+    public GameObject NextArrowButton;
+    public GameObject BackArrowButton;
 
     private void Awake()
     {
@@ -35,7 +42,7 @@ public class UITransitionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!audioPanel.activeInHierarchy && !controlsPanel.activeInHierarchy)
+            if (!audioPanel.activeInHierarchy && !controlsPanel.activeInHierarchy && !HelpMenu.activeInHierarchy)
             {
                 UpdateCamera(mainmenuCam);
                 optionsPanel.SetActive(false);
@@ -55,6 +62,16 @@ public class UITransitionManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape) && CreaturePanel.activeInHierarchy)
             {
                 CreaturePanel.SetActive(false);
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && HelpMenu.activeInHierarchy)
+            {
+                optionsPanel.SetActive(true);
+                BackButton.SetActive(true);
+                HelpMenu.SetActive(false);
+                BackAcceptButton.SetActive(false);
+                helpPanel2.SetActive(false);
+                helpPanel3.SetActive(false);
+                helpPanel4.SetActive(false);
             }
         }
     }
@@ -101,13 +118,72 @@ public class UITransitionManager : MonoBehaviour
         audioPanel.SetActive(false);
         optionsPanel.SetActive(true);
         controlsPanel.SetActive(false);
+        HelpMenu.SetActive(false);
         BackButton.SetActive(true);
         BackAcceptButton.SetActive(false);
+
+        helpPanel2.SetActive(false);
+        helpPanel3.SetActive(false);
+        helpPanel4.SetActive(false);
     }
     public void BackButtonActive()
     {
         BackButton.SetActive(true);
     }
+
+    public void HelpMenuActive()
+    {
+        HelpMenu.SetActive(true);
+        helpPanel1.SetActive(true);
+        NextArrowButton.SetActive(true);
+        BackArrowButton.SetActive(false);
+        optionsPanel.SetActive(false);
+        BackButton.SetActive(false);
+        BackAcceptButton.SetActive(true);
+    }
+    public void NextArrow()
+    {
+        if (helpPanel1.activeInHierarchy)
+        {
+            helpPanel1.SetActive(false);
+            helpPanel2.SetActive(true);
+            BackArrowButton.SetActive(true);
+        }
+        else if (helpPanel2.activeInHierarchy)
+        {
+            helpPanel2.SetActive(false);
+            helpPanel3.SetActive(true);
+        }
+        else if (helpPanel3.activeInHierarchy)
+        {
+            helpPanel3.SetActive(false);
+            helpPanel4.SetActive(true);
+            NextArrowButton.SetActive(false);
+        }
+    }
+    public void BackArrow()
+    {
+        if (helpPanel4.activeInHierarchy)
+        {
+            helpPanel4.SetActive(false);
+            helpPanel3.SetActive(true);
+            NextArrowButton.SetActive(true);
+        }
+        else if (helpPanel3.activeInHierarchy)
+        {
+            helpPanel3.SetActive(false);
+            helpPanel2.SetActive(true);
+        }
+        else if (helpPanel2.activeInHierarchy)
+        {
+            helpPanel2.SetActive(false);
+            helpPanel1.SetActive(true);
+            BackArrowButton.SetActive(false);
+        }
+    }
+
+
+
 
     public void LevelOneStart()
     {

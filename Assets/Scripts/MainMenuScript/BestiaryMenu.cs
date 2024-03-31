@@ -91,7 +91,7 @@ public class BestiaryMenu : MonoBehaviour
                     ss.highlightedSprite = dinoHighlighted;
                     dinoButton.spriteState = ss;
                 }
-                else if (creature.creatureName == "Rock")
+                else if (creature.creatureName == "Geode")
                 {
                     rockButton.image.sprite = rockUnlocked;
                     ss.highlightedSprite = rockHighlighted;
@@ -144,7 +144,7 @@ public class BestiaryMenu : MonoBehaviour
     {
         foreach (CreatureData creature in creaturesCaughtInfo)
         {
-            if (creature.creatureName == "Rock")
+            if (creature.creatureName == "Geode")
             {
                 creaturePanel.SetActive(true);
 

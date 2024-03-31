@@ -97,7 +97,7 @@ public class BestiaryMenu : MonoBehaviour
                     ss.highlightedSprite = rockHighlighted;
                     rockButton.spriteState = ss;
                 }
-                else if (creature.creatureName == "Crab")
+                else if (creature.creatureName == "Crabber")
                 {
                     crabButton.image.sprite = crabUnlocked;
                     ss.highlightedSprite = crabHighlighted;
@@ -176,7 +176,7 @@ public class BestiaryMenu : MonoBehaviour
         {
             foreach (CreatureData creature in creaturesCaughtInfo)
             {
-                if (creature.creatureName == "Crab")
+                if (creature.creatureName == "Crabber")
             {
                 creaturePanel.SetActive(true);
 

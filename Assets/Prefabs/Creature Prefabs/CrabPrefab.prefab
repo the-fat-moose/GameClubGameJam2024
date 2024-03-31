@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736757c8c579a844fade49a7c4ee59d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creatureDescription: Example Example Example Example
-  creatureNameText: Crab
+  creatureDescription: Mostly sleeps and is very anti social. caution! might pinch
+    finger
+  creatureNameText: Crabber
 --- !u!1001 &974484873811001422
 PrefabInstance:
   m_ObjectHideFlags: 0

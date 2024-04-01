@@ -66,7 +66,6 @@ public class CageTarget : MonoBehaviour
     public void IncreaseHealth(float amount)
     {
         currentHealth += amount;
-        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
 
         if (currentHealth >= maxHealth)
         {
@@ -74,6 +73,7 @@ public class CageTarget : MonoBehaviour
             canHeal = false;
         }
         SetHealthPercentage();
+        if (playerUIManager != null) { playerUIManager.GetCageHealthPercentage(healthPercentage, currentHealth, maxHealth); }
     }
 
     private void SetHealthPercentage()

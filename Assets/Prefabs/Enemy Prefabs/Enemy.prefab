@@ -101,12 +101,13 @@ MonoBehaviour:
   projectile: {fileID: 5746048849343733508, guid: fccd8833749fb19438d8e1fb8a7ff075, type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
+  timeTillMove: 0
   gunTip: {fileID: 5186558308242019760}
   lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   timeBetweenAttacks: 0.5
   gunPoint: {fileID: 5186558308242019760}
   range: 100
-  sightRange: 12
+  sightRange: 20
   attackRange: 11.5
   playerInSightRange: 0
   playerInAttackRange: 0

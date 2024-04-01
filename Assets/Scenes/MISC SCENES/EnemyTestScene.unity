@@ -132,12 +132,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1995948973770130538, guid: 3bd5f16bb2660f1449d5f073e09552d2, type: 3}
-      propertyPath: sightRange
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1995948973770130538, guid: 3bd5f16bb2660f1449d5f073e09552d2, type: 3}
-      propertyPath: attackRange
-      value: 11.5
+      propertyPath: player
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2768960231528324899, guid: 3bd5f16bb2660f1449d5f073e09552d2, type: 3}
       propertyPath: m_LocalPosition.x

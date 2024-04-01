@@ -17,6 +17,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private Vector3 walkPoint;
     private bool walkPointSet;
     [SerializeField] private float walkPointRange;
+    [SerializeField] private float timeTillMove;
     
     [Header("Gunshot Drawing")]
     [SerializeField] Transform gunTip;
@@ -67,6 +68,8 @@ public class EnemyAi : MonoBehaviour
                 playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
                 playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+                timeTillMove -= Time.deltaTime;
+
                 if (!playerInSightRange && !playerInAttackRange)
                 {
                     Patroling();
@@ -109,6 +112,10 @@ public class EnemyAi : MonoBehaviour
         {
             walkPointSet = false;
         }
+        else if(timeTillMove <= 0f)
+        {
+            walkPointSet = false;
+        }
     }
 
     private void SearchWalkPoint()
@@ -116,6 +123,8 @@ public class EnemyAi : MonoBehaviour
         //Calculate ransom point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        timeTillMove = 3f;
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
@@ -147,13 +156,6 @@ public class EnemyAi : MonoBehaviour
         if(!alreadyAttacked)
         {
             //attack code
-            /*Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);*/
-
             Shoot();
             
         }
